@@ -14,16 +14,16 @@
       <div class="supp">
         <b-button class="butt" variant="primary">supprimer la liste</b-button>
       </div>
-      <div class="panierimg">
-         <b-img src="../assets/panier.png"></b-img>
+        <div>
+         <b-img :src="require('../assets/panier.png')" class="panierimg"></b-img>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "Accueil",
-};
+  name: 'Accueil'
+}
 </script>
 <style>
 .accueil {
@@ -31,9 +31,11 @@ export default {
   text-align: center;
 }
 .layus {
+  margin-top: 20px;
   text-align: center;
 }
 .corpus{
+  margin-top: 50px;
     text-align: center;
 }
 .butt {
@@ -41,7 +43,10 @@ export default {
   margin-left: 10px;
   margin-top: 20px;
 }
-.panierImg{
+.panierimg{
+  margin-top: 100px;
+  max-width: 100%;
+  max-height: 100%;
 
 }
 </style>
