@@ -2,10 +2,13 @@
   <div>
     <div class="corpus">
       <div class="create">
-        <b-button class="butt" @click="gotoListCrea()" variant="primary">Creer une liste</b-button>
+        <b-button class="butt" @click="gotoListCrea()" variant="primary">Creer la liste</b-button>
       </div>
       <div class="look">
-        <b-button class="butt" variant="primary">Voir la liste</b-button>
+        <b-button class="butt" @click="goToList()" variant="primary">Voir la liste</b-button>
+      </div>
+          <div class="supp">
+        <b-button class="butt" variant="primary">Modifier la liste</b-button>
       </div>
       <div class="supp">
         <b-button class="butt" variant="primary">supprimer la liste</b-button>
@@ -20,6 +23,9 @@ export default {
   methods: {
     gotoListCrea () {
       this.$router.push({ name: 'ListeCreat' })
+    },
+    goToList () {
+      this.$router.push({name: 'Liste'})
     }
   }
 }

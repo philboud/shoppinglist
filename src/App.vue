@@ -20,7 +20,15 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      selected: []
+    }
+  },
+  mounted () {
+    localStorage.setItem('selected', JSON.stringify(this.selected))
+  }
 }
 </script>
 <style>
