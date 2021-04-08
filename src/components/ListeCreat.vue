@@ -7,6 +7,9 @@
         <ul id="listcat" v-for="item in images" :key="item.image">
           <li  @click="goToCategory(item)"><b-avatar size="120px" square><b-img :src="require('../assets/imagescat/' + item.image + '.jpg')"></b-img></b-avatar></li>
         </ul>
+        <div class="listbutt">
+          <b-button @click="goToList">voir la liste</b-button>
+        </div>
       </div>
     </div>
 </template>
@@ -25,6 +28,9 @@ export default {
     }
   },
   methods: {
+    goToList () {
+      this.$router.push({name: 'Liste'})
+    },
     goToCategory (item) {
       if (item.image === 'epicerie') {
         this.$router.push({name: 'Epicerie'})

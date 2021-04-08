@@ -6,6 +6,7 @@
     <div class="articles">
      <b-form-group>
     <b-form-checkbox-group
+      @click ="onChecked()"
       v-model="selected"
       :options="options"
       size="lg"
@@ -23,6 +24,7 @@ export default {
   data () {
     return {
       selected: [],
+      listeEnCours: [],
       options: [
         {text: 'lait', value: 'lait'},
         {text: 'eau', value: 'eau'},
@@ -43,6 +45,9 @@ export default {
       console.log(this.selected)
       localStorage.setItem('selected', JSON.stringify(this.selected))
       this.$router.push({name: 'ListeCreat'})
+    },
+    onChecked () {
+      alert('test')
     }
   }
 }

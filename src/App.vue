@@ -27,7 +27,9 @@ export default {
     }
   },
   mounted () {
-    localStorage.setItem('selected', JSON.stringify(this.selected))
+    if (localStorage.getItem('selected') === null) {
+      localStorage.setItem('selected', JSON.stringify(this.selected))
+    }
   }
 }
 </script>
