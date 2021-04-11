@@ -4,16 +4,17 @@
     <h4>Produit maison entretien</h4>
     </div>
     <div class="articles">
-      <b-form-group>
-    <b-form-checkbox-group
-      v-model='selected'
-      :options="options"
-      size="lg"
-      stacked>
-      </b-form-checkbox-group>
-    </b-form-group>
+      <label><p>Produits courants</p></label>
+       <div class="selectProd">
+      <b-form-select placeholder="Produits courants" v-model="selected" :options="options" @change="addTolist"></b-form-select>
+  </div>
     </div>
-    <b-button variant="success" @click="goToCat()">Enregistre et etour</b-button>
+    <div class="buttSave">
+    <b-button variant="success" @click="goToCat()">Enregistrer</b-button>
+      <div>
+    <b-table striped hover :items="listeEnCours"></b-table>
+  </div>
+  </div>
   </div>
 </template>
 
@@ -22,30 +23,43 @@ export default {
   name: 'ProdMenag',
   data () {
     return {
+      qty: '',
       selected: [],
+      listeEnCours: [],
       options: [
-        {text: 'Javel', value: 'Javel'},
-        {text: 'Produit vitres', value: 'Produit vitres'},
-        {text: 'lessive', value: 'lessive'},
-        {text: 'Pastilles lave-vaisselle', value: 'Pastilles lave-vaisselle'},
-        {text: 'Detergent', value: 'Detergent'},
-        {text: 'lingettes', value: 'lingettes'},
-        {text: 'PQ', value: 'PQ'},
-        {text: 'Sopalain', value: 'Sopalain'}
+        {id: 0, text: 'Javel', value: 'Javel', qty: ''},
+        {id: 1, text: 'Produit vitres', value: 'Produit vitres', qty: ''},
+        {id: 2, text: 'lessive', value: 'lessive', qty: ''},
+        {id: 3, text: 'Pastilles lave-vaisselle', value: 'Pastilles lave-vaisselle', qty: ''},
+        {id: 4, text: 'Detergent', value: 'Detergent', qty: ''},
+        {id: 5, text: 'lingettes', value: 'lingettes', qty: ''},
+        {id: 6, text: 'PQ', value: 'PQ', qty: ''},
+        {id: 7, text: 'Sopalain', value: 'Sopalain', qty: ''}
       ]
     }
   },
   mounted () {
-    this.selected = JSON.parse(localStorage.getItem('selected'))
+    this.listeEnCours = JSON.parse(localStorage.getItem('selected'))
   },
   methods: {
-    getList () {
-
-    },
     goToCat () {
-      localStorage.setItem('selected', JSON.stringify(this.selected))
+      localStorage.setItem('selected', JSON.stringify(this.listeEnCours))
       this.$router.push({name: 'ListeCreat'})
+    },
+    addTolist (item) {
+      this.listeEnCours.push({produit: this.selected})
+      console.log(this.listeEnCours)
     }
   }
 }
 </script>
+
+<style>
+.selectProd{
+  width: 200px;
+}
+.articles{
+  margin-left: 20px;
+  font-size: 2em;
+}
+</style>

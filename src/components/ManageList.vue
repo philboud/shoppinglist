@@ -11,7 +11,7 @@
         <b-button class="butt" variant="primary">Modifier la liste</b-button>
       </div>
       <div class="supp">
-        <b-button class="butt" variant="primary">supprimer la liste</b-button>
+        <b-button class="butt" @click="suppList()" variant="primary">supprimer la liste</b-button>
       </div>
     </div>
   </div>
@@ -26,6 +26,10 @@ export default {
     },
     goToList () {
       this.$router.push({name: 'Liste'})
+    },
+    suppList () {
+      localStorage.removeItem('selected')
+      this.$router.push({name: 'Accueil'})
     }
   }
 }

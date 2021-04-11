@@ -5,7 +5,7 @@
     <b-button @click="goToCreat()">Retour à la création</b-button>
     </div>
     <div class="container">
- <b-table id="products" striped hover :fields="fields" :items="products"></b-table>
+ <b-table id="products" striped hover :fields="fields" :items="selected"></b-table>
     </div>
   </div>
 </template>
@@ -21,7 +21,11 @@ export default {
     return {
       fields: [ {
         key: 'produit',
-        label: 'Contenu de la liste'
+        label: 'Produits'
+      },
+      {
+        key: 'qty',
+        label: 'quantité'
       }
       ],
       selected: [],
@@ -37,14 +41,10 @@ export default {
     },
     getData () {
       this.selected = JSON.parse(localStorage.getItem('selected'))
-      for (var i = 0; i < this.selected.length; i++) {
-        this.products.push({'produit': this.selected[i]})
-      }
-      console.log(this.products)
     },
     generatePdf () {
       const doc = new JSPDF()
-      doc.text('liste de courses', 5, 5)
+      doc.text('liste de courses', 10, 10)
       doc.autoTable({html: '#products'})
       doc.save('a4.pdf')
       console.log(doc)

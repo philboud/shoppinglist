@@ -49,10 +49,14 @@ export default {
 }
 </script>
 <style>
-
+.listbutt{
+  margin: 0 auto;
+  text-align: center;
+  width: 200px;
+}
 .listcentrage{
   margin: 0 auto;
-  Width: 300px;
+  Width: 270px;
 }
 #listcat{
   padding-left: 10px;

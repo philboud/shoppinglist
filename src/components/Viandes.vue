@@ -4,45 +4,50 @@
     <h4>Rayon boucherie</h4>
     </div>
       <div class="articles">
-     <b-form-group>
-    <b-form-checkbox-group
-      v-model="selected"
-      :options="options"
-      size="lg"
-      stacked>
-      </b-form-checkbox-group>
-    </b-form-group>
+ <div>
+    <b-form-select v-model="selected" :options="options" @change="addTolist"></b-form-select>
+  </div>
     </div>
-    <b-button variant="success" @click="goToCat()">Enregistre et etour</b-button>
+    <div class="buttSave">
+    <b-button variant="success" @click="goToCat()">Enregistrer</b-button>
+      <div>
+    <b-table striped hover :items="listeEnCours"></b-table>
+  </div>
+  </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Epicerie',
+  name: '*Viandes',
   data () {
     return {
+      qty: '',
       selected: [],
+      listeEnCours: [],
       options: [
-        {text: 'Boeuf', value: 'Boeuf'},
-        {text: 'Agneau', value: 'Agneau'},
-        {text: 'Mouton', value: 'Mouton'},
-        {text: 'Porc', value: 'Porc'},
-        {text: 'Poulet', value: 'Poulet'},
-        {text: 'canard', value: 'canard'},
-        {text: 'Saucisses', value: 'Saucisses'},
-        {text: 'Rillettes', value: 'Rillettes'}
+        {id: 0, text: 'Boeuf', value: 'Boeuf', qty: ''},
+        {id: 1, text: 'Agneau', value: 'Agneau', qty: ''},
+        {id: 2, text: 'Mouton', value: 'Mouton', qty: ''},
+        {id: 3, text: 'Porc', value: 'Porc', qty: ''},
+        {id: 4, text: 'Poulet', value: 'Poulet', qty: ''},
+        {id: 5, text: 'canard', value: 'canard', qty: ''},
+        {id: 6, text: 'Saucisses', value: 'Saucisses', qty: ''},
+        {id: 7, text: 'Rillettes', value: 'Rillettes', qty: ''}
       ]
     }
   },
   mounted () {
-    this.selected = JSON.parse(localStorage.getItem('selected'))
+    this.listeEnCours = JSON.parse(localStorage.getItem('selected'))
   },
   methods: {
     goToCat () {
-      console.log(this.selected)
-      localStorage.setItem('selected', JSON.stringify(this.selected))
+      localStorage.setItem('selected', JSON.stringify(this.listeEnCours))
       this.$router.push({name: 'ListeCreat'})
+    },
+    addTolist (item) {
+      this.listeEnCours.push({produit: this.selected})
+      console.log(this.listeEnCours)
     }
   }
 }

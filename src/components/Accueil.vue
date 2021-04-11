@@ -12,6 +12,16 @@
 <script>
 export default {
   name: 'Accueil',
+  data () {
+    return {
+      selected: []
+    }
+  },
+  mounted () {
+    if (localStorage.getItem('selected') === null) {
+      localStorage.setItem('selected', JSON.stringify(this.selected))
+    }
+  },
   methods: {
     goToApp () {
       this.$router.push({path: '/gestionliste'})

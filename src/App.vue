@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div>
-  <b-navbar type="dark" variant="dark">
+  <b-navbar type="dark" variant="dark" fixed="top">
     <b-navbar-nav>
       <b-nav-item href="#/">Accueil</b-nav-item>
       <b-nav-item href="#/gestionliste">Gestion de liste</b-nav-item>
@@ -37,6 +37,11 @@ export default {
 .accueilEntete {
   background-color: aquamarine;
   text-align: center;
+}
+.buttSave{
+  margin: 0 auto;
+  text-align: center;
+  width: 200px;
 }
 .subtitle{
   margin: 0 auto;
