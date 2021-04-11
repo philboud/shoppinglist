@@ -1,7 +1,7 @@
 <template>
-<div>
-  <div class="subtitle">
-    <h4>Rayon boucherie</h4>
+  <div>
+    <div class="subtitle">
+      <h4>Poissonerie</h4>
     </div>
     <div class="articles">
  <div>
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: 'Viandes',
+  name: 'Poissonnerie',
   data () {
     return {
       qtys: [],
@@ -38,14 +38,14 @@ export default {
       selected: [],
       listeEnCours: [],
       options: [
-        {id: 0, text: 'Boeuf', value: 'Boeuf', qty: ''},
-        {id: 1, text: 'Agneau', value: 'Agneau', qty: ''},
-        {id: 2, text: 'Mouton', value: 'Mouton', qty: ''},
-        {id: 3, text: 'Porc', value: 'Porc', qty: ''},
-        {id: 4, text: 'Poulet', value: 'Poulet', qty: ''},
-        {id: 5, text: 'canard', value: 'canard', qty: ''},
-        {id: 6, text: 'Saucisses', value: 'Saucisses', qty: ''},
-        {id: 7, text: 'Rillettes', value: 'Rillettes', qty: ''}
+        {id: 0, text: 'Colin', value: 'Colin', qty: ''},
+        {id: 1, text: 'Limande', value: 'Limande', qty: ''},
+        {id: 2, text: 'Fruits de mer', value: 'Fruits de mer', qty: ''},
+        {id: 3, text: 'Saumonette', value: 'Saumonette', qty: ''},
+        {id: 4, text: 'Surimi', value: 'Surimi', qty: ''},
+        {id: 5, text: 'Soupe de poisson', value: 'Soupe de poisson', qty: ''},
+        {id: 6, text: 'Crevettes', value: 'Crevettes', qty: ''},
+        {id: 7, text: 'Gambas', value: 'Gambas', qty: ''}
       ],
       unites: ['1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }

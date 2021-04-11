@@ -7,7 +7,9 @@ import Epicerie from '@/components/Epiceries'
 import ProdMenag from '@/components/ProdMenag'
 import FruitLeg from '@/components/LegumesFruits'
 import Viandes from '@/components/Viandes'
+import Poissonnerie from '@/components/Poissonnerie'
 import Liste from '@/components/Liste'
+import Help from '@/components/Help'
 Vue.use(Router)
 
 export default new Router({
@@ -51,6 +53,16 @@ export default new Router({
       path: '/liste',
       name: 'Liste',
       component: Liste
+    },
+    {
+      path: '/poissonnerie',
+      name: 'Poissonnerie',
+      component: Poissonnerie
+    },
+    {
+      path: '/help',
+      name: 'Help',
+      component: Help
     }
   ]
 })

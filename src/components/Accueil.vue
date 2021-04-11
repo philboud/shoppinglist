@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     goToApp () {
-      this.$router.push({path: '/gestionliste'})
+      this.$router.push({path: '/listecreat'})
     }
   }
 }

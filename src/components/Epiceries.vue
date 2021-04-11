@@ -5,12 +5,15 @@
     </div>
     <div class="articles">
  <div>
-    <b-form-select v-model="selected" :options="options" @change="addTolist"></b-form-select>
+    <b-form-select class="selectSize" v-model="selected" :options="options" @change="addTolist"></b-form-select>
   </div>
   <div>
     <b-modal ref="my-modal" hide-footer title="Combien en voulez vous?" centered>
       <div class="d-block text-center">
+        <label>Choisis dans la liste!</label>
          <b-form-select v-model="qtys" :options="unites"></b-form-select>
+         <label>Ou ecris ce que tu veux!</label>
+         <b-input v-model="qty"></b-input>
       </div>
       <b-button class="mt-3" variant="success" block @click="hideModal">Validez!</b-button>
         </b-modal>
@@ -18,7 +21,7 @@
     </div>
     <div class="buttSave">
     <b-button variant="success" @click="goToCat()">Enregistrer</b-button>
-      <div>
+      <div class="tabList">
     <b-table striped hover :items="listeEnCours"></b-table>
   </div>
   </div>
@@ -44,23 +47,7 @@ export default {
         {id: 6, text: 'poivre', value: 'poivre', qty: ''},
         {id: 7, text: 'pates', value: 'pates', qty: ''}
       ],
-      unites: [
-        {text: '1', value: '1'},
-        {text: '1 kg', value: '1 kg'},
-        {text: '1 litre', value: '1 litre'},
-        {text: '2', value: '2'},
-        {text: '2 kg', value: '2 kg'},
-        {text: '2 litre', value: '2 litre'},
-        {text: '3', value: '3'},
-        {text: '3 kg', value: '3 kg'},
-        {text: '3 litre', value: '3 litre'},
-        {text: '4', value: '4'},
-        {text: '4 kg', value: '4 kg'},
-        {text: '4 litre', value: '4 litre'},
-        {text: '5', value: '5'},
-        {text: '5 kg', value: '5 kg'},
-        {text: '5 litre', value: '5 litre'}
-      ]
+      unites: ['1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {
@@ -81,49 +68,17 @@ export default {
     },
     hideModal () {
       console.log('qtys', this.qtys)
-      this.qty = this.qtys
+      if (this.qtys.length !== 0) {
+        this.qty = this.qtys
+      }
       if (this.qty !== '') {
         this.listeEnCours.push({produit: this.selected, qty: this.qty})
         this.qty = ''
         this.qtys = []
         this.selected = []
-        console.log(this.listeEnCours)
       }
       this.$refs['my-modal'].hide()
     }
   }
 }
 </script>
-
-<style>
-.listList{
-  list-style: none;
-}
-input[type=checkbox] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    vertical-align: middle;
-    width: 30px;
-    height: 30px;
-    font-size: 30px;
-    background-color: #eee;
-}
-
-input[type=checkbox]:checked:after {
-    position: relative;
-    bottom: 3px;
-    left: 1px;
-    color: blue;
-    content: "\2713";
-}
-.qtyfield{
-  width: 80px;
-  height: 40px;
-  margin-right: 10%;
-  float: right;
-}
-.articles{
-  margin-left: 20px;
-  font-size: 2em;
-}
-</style>

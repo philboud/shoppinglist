@@ -5,7 +5,7 @@
     <b-navbar-nav>
       <b-nav-item href="#/">Accueil</b-nav-item>
       <b-nav-item href="#/gestionliste">Gestion de liste</b-nav-item>
-      <b-nav-item href="#">help</b-nav-item>
+      <b-nav-item href="#/help">help</b-nav-item>
     </b-navbar-nav>
   </b-navbar>
   </div>
@@ -34,9 +34,25 @@ export default {
 }
 </script>
 <style>
+.articles{
+  margin-bottom: 30px;
+  margin-left: 20px;
+  font-size: 2em;
+}
+.nav-link{
+    color: #063972 !important;
+    font-weight: bold;
+}
+.bg-dark{
+  background-color: rgb(74, 201, 48) !important;
+}
 .accueilEntete {
+  margin: 0 auto;
+  width: 250px;
+  margin-top: 80px;
   background-color: aquamarine;
   text-align: center;
+  margin-bottom: 50px;
 }
 .buttSave{
   margin: 0 auto;
@@ -49,5 +65,12 @@ export default {
   width: 200px;
   background-color: rgb(92, 213, 243);
   margin-bottom: 50px;
+}
+.selectSize{
+  width: 250px;
+}
+.tabList{
+  margin: 0 auto;
+  width: 200px;
 }
 </style>

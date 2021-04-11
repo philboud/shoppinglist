@@ -20,10 +20,15 @@ export default {
     return {
       pathImage: '../assets/imagescat/',
       images: [
-        {image: 'entretien'},
+        {image: 'viandes'},
         {image: 'legumes'},
         {image: 'epicerie'},
-        {image: 'viandes'}
+        {image: 'poissonnerie'},
+        {image: 'hygiene'},
+        {image: 'linges'},
+        {image: 'puericulture'},
+        {image: 'entretien'},
+        {image: 'animalerie'}
       ]
     }
   },
@@ -44,6 +49,9 @@ export default {
       if (item.image === 'legumes') {
         this.$router.push({name: 'FruitLeg'})
       }
+      if (item.image === 'poissonnerie') {
+        this.$router.push({name: 'Poissonnerie'})
+      }
     }
   }
 }
@@ -56,7 +64,7 @@ export default {
 }
 .listcentrage{
   margin: 0 auto;
-  Width: 270px;
+  Width: 400px;
 }
 #listcat{
   padding-left: 10px;
