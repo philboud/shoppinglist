@@ -10,12 +10,10 @@
   <div>
     <b-modal ref="my-modal" hide-footer title="Combien en voulez vous?" centered>
       <div class="d-block text-center">
-        <label>Choisis dans la liste!</label>
          <b-form-select v-model="qtys" :options="unites"></b-form-select>
-         <label>Ou ecris ce que tu veux!</label>
-         <b-input v-model="qty"></b-input>
+         <b-input v-model="qty" placeholder="Ou ecris ce que tu veux!"></b-input>
       </div>
-      <b-button class="mt-3" variant="success" block @click="hideModal">validez</b-button>
+      <b-button class="mt-3" variant="success" block @click="hideModal">Validez!</b-button>
         </b-modal>
     </div>
     </div>
@@ -35,20 +33,21 @@ export default {
     return {
       checked: '',
       qty: '',
-      qtys: [],
+      qtys: null,
       listeEnCours: [],
-      selected: [],
+      selected: null,
       options: [
-        {id: 0, text: 'Pommes', value: 'Pommes', qty: ''},
-        {id: 1, text: 'Poires', value: 'Poires', qty: ''},
-        {id: 2, text: 'Bananes', value: 'Bananes', qty: ''},
-        {id: 3, text: 'Oranges', value: 'Oranges', qty: ''},
-        {id: 4, text: 'Clémentines', value: 'Clémentines', qty: ''},
-        {id: 5, text: 'Raisin', value: 'Raisin', qty: ''},
-        {id: 6, text: 'Litchis', value: 'Litchis', qty: ''},
-        {id: 7, text: 'Prunes', value: 'Prunes', qty: ''}
+        {value: null, text: 'Selectionne ton produit'},
+        {text: 'Pommes', value: 'Pommes'},
+        {text: 'Poires', value: 'Poires'},
+        {text: 'Bananes', value: 'Bananes'},
+        {text: 'Oranges', value: 'Oranges'},
+        {text: 'Clémentines', value: 'Clémentines'},
+        {text: 'Raisin', value: 'Raisin'},
+        {text: 'Litchis', value: 'Litchis'},
+        {text: 'Prunes', value: 'Prunes'}
       ],
-      unites: ['1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
+      unites: [{value: null, text: 'Combien en veux-tu?'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {
@@ -68,15 +67,14 @@ export default {
       this.$refs['my-modal'].show()
     },
     hideModal () {
-      console.log('qtys', this.qtys)
-      if (this.qtys.length !== 0) {
+      if (this.qtys !== null) {
         this.qty = this.qtys
       }
       if (this.qty !== '') {
         this.listeEnCours.push({produit: this.selected, qty: this.qty})
         this.qty = ''
-        this.qtys = []
-        this.selected = []
+        this.qtys = null
+        this.selected = null
       }
       this.$refs['my-modal'].hide()
     }

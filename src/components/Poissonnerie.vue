@@ -10,10 +10,8 @@
   <div>
     <b-modal ref="my-modal" hide-footer title="Combien en voulez vous?" centered>
       <div class="d-block text-center">
-        <label>Choisis dans la liste!</label>
          <b-form-select v-model="qtys" :options="unites"></b-form-select>
-         <label>Ou ecris ce que tu veux!</label>
-         <b-input v-model="qty"></b-input>
+         <b-input v-model="qty" placeholder="Ou ecris ce que tu veux!"></b-input>
       </div>
       <b-button class="mt-3" variant="success" block @click="hideModal">Validez!</b-button>
         </b-modal>
@@ -33,21 +31,22 @@ export default {
   name: 'Poissonnerie',
   data () {
     return {
-      qtys: [],
+      qtys: null,
       qty: '',
-      selected: [],
+      selected: null,
       listeEnCours: [],
       options: [
-        {id: 0, text: 'Colin', value: 'Colin', qty: ''},
-        {id: 1, text: 'Limande', value: 'Limande', qty: ''},
-        {id: 2, text: 'Fruits de mer', value: 'Fruits de mer', qty: ''},
-        {id: 3, text: 'Saumonette', value: 'Saumonette', qty: ''},
-        {id: 4, text: 'Surimi', value: 'Surimi', qty: ''},
-        {id: 5, text: 'Soupe de poisson', value: 'Soupe de poisson', qty: ''},
-        {id: 6, text: 'Crevettes', value: 'Crevettes', qty: ''},
-        {id: 7, text: 'Gambas', value: 'Gambas', qty: ''}
+        {value: null, text: 'Selectionne ton produit'},
+        {text: 'Colin', value: 'Colin'},
+        {text: 'Limande', value: 'Limande'},
+        {text: 'Fruits de mer', value: 'Fruits de mer'},
+        {text: 'Saumonette', value: 'Saumonette'},
+        {text: 'Surimi', value: 'Surimi'},
+        {text: 'Soupe de poisson', value: 'Soupe de poisson'},
+        {text: 'Crevettes', value: 'Crevettes'},
+        {text: 'Gambas', value: 'Gambas'}
       ],
-      unites: ['1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
+      unites: [{value: null, text: 'Combien en veux-tu?'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {
@@ -68,14 +67,14 @@ export default {
     },
     hideModal () {
       console.log('qtys', this.qtys)
-      if (this.qtys.length !== 0) {
+      if (this.qtys !== null) {
         this.qty = this.qtys
       }
       if (this.qty !== '') {
         this.listeEnCours.push({produit: this.selected, qty: this.qty})
         this.qty = ''
-        this.qtys = []
-        this.selected = []
+        this.qtys = null
+        this.selected = null
       }
       this.$refs['my-modal'].hide()
     }

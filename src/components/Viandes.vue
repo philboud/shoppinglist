@@ -8,12 +8,10 @@
     <b-form-select class="selectSize" v-model="selected" :options="options" @change="addTolist"></b-form-select>
   </div>
   <div>
-    <b-modal ref="my-modal" hide-footer title="Combien en voulez vous?" centered>
+    <b-modal ref="my-modal" hide-footer title="Combien en veux tu?" centered>
       <div class="d-block text-center">
-        <label>Choisis dans la liste!</label>
          <b-form-select v-model="qtys" :options="unites"></b-form-select>
-         <label>Ou ecris ce que tu veux!</label>
-         <b-input v-model="qty"></b-input>
+         <b-input v-model="qty" placeholder="Ou ecris ce que tu veux!"></b-input>
       </div>
       <b-button class="mt-3" variant="success" block @click="hideModal">Validez!</b-button>
         </b-modal>
@@ -33,21 +31,22 @@ export default {
   name: 'Viandes',
   data () {
     return {
-      qtys: [],
+      qtys: null,
       qty: '',
-      selected: [],
+      selected: null,
       listeEnCours: [],
       options: [
-        {id: 0, text: 'Boeuf', value: 'Boeuf', qty: ''},
-        {id: 1, text: 'Agneau', value: 'Agneau', qty: ''},
-        {id: 2, text: 'Mouton', value: 'Mouton', qty: ''},
-        {id: 3, text: 'Porc', value: 'Porc', qty: ''},
-        {id: 4, text: 'Poulet', value: 'Poulet', qty: ''},
-        {id: 5, text: 'canard', value: 'canard', qty: ''},
-        {id: 6, text: 'Saucisses', value: 'Saucisses', qty: ''},
-        {id: 7, text: 'Rillettes', value: 'Rillettes', qty: ''}
+        {value: null, text: 'Choisis ton produit dans la liste'},
+        {text: 'Boeuf', value: 'Boeuf'},
+        {text: 'Agneau', value: 'Agneau'},
+        {text: 'Mouton', value: 'Mouton'},
+        {text: 'Porc', value: 'Porc'},
+        {text: 'Poulet', value: 'Poulet'},
+        {text: 'canard', value: 'canard'},
+        {text: 'Saucisses', value: 'Saucisses'},
+        {text: 'Rillettes', value: 'Rillettes'}
       ],
-      unites: ['1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
+      unites: [{value: null, text: 'Choisis ta quantité'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {
@@ -67,15 +66,14 @@ export default {
       this.$refs['my-modal'].show()
     },
     hideModal () {
-      console.log('qtys', this.qtys)
-      if (this.qtys.length !== 0) {
+      if (this.qtys !== null) {
         this.qty = this.qtys
       }
       if (this.qty !== '') {
         this.listeEnCours.push({produit: this.selected, qty: this.qty})
         this.qty = ''
-        this.qtys = []
-        this.selected = []
+        this.qtys = null
+        this.selected = null
       }
       this.$refs['my-modal'].hide()
     }

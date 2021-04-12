@@ -10,10 +10,8 @@
   <div>
     <b-modal ref="my-modal" hide-footer title="Combien en voulez vous?" centered>
       <div class="d-block text-center">
-          <label>Choisis dans la liste!</label>
-         <b-form-select v-model="qtys" :options="unites"></b-form-select><br><br>
-         <label>Ou ecris ce que tu veux!</label>
-         <b-input v-model="qty"></b-input>
+         <b-form-select v-model="qtys" :options="unites"></b-form-select>
+         <b-input v-model="qty" placeholder="Ou ecris ce que tu veux!"></b-input>
       </div>
       <b-button class="mt-3" variant="success" block @click="hideModal">Validez!</b-button>
         </b-modal>
@@ -33,21 +31,22 @@ export default {
   name: 'ProdMenag',
   data () {
     return {
-      qtys: [],
+      qtys: null,
       qty: '',
-      selected: [],
+      selected: null,
       listeEnCours: [],
       options: [
-        {id: 0, text: 'Javel', value: 'Javel', qty: ''},
-        {id: 1, text: 'Produit vitres', value: 'Produit vitres', qty: ''},
-        {id: 2, text: 'lessive', value: 'lessive', qty: ''},
-        {id: 3, text: 'Pastilles lave-vaisselle', value: 'Pastilles lave-vaisselle', qty: ''},
-        {id: 4, text: 'Detergent', value: 'Detergent', qty: ''},
-        {id: 5, text: 'lingettes', value: 'lingettes', qty: ''},
-        {id: 6, text: 'PQ', value: 'PQ', qty: ''},
-        {id: 7, text: 'Sopalain', value: 'Sopalain', qty: ''}
+        {value: null, text: 'Selectionne ton produit'},
+        {text: 'Javel', value: 'Javel'},
+        {text: 'Produit vitres', value: 'Produit vitres'},
+        {text: 'lessive', value: 'lessive'},
+        {text: 'Pastilles lave-vaisselle', value: 'Pastilles lave-vaisselle'},
+        {text: 'Detergent', value: 'Detergent'},
+        {text: 'lingettes', value: 'lingettes'},
+        {text: 'PQ', value: 'PQ'},
+        {text: 'Sopalain', value: 'Sopalain'}
       ],
-      unites: ['1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
+      unites: [{value: null, text: 'Combien en veux-tu?'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {
@@ -67,14 +66,14 @@ export default {
       this.$refs['my-modal'].show()
     },
     hideModal () {
-      if (this.qtys.length !== 0) {
+      if (this.qtys !== null) {
         this.qty = this.qtys
       }
       if (this.qty !== '') {
         this.listeEnCours.push({produit: this.selected, qty: this.qty})
         this.qty = ''
-        this.qtys = []
-        this.selected = []
+        this.qtys = null
+        this.selected = null
       }
       this.$refs['my-modal'].hide()
     }
