@@ -40,11 +40,11 @@ export default {
   font-size: 2em;
 }
 .nav-link{
-    color: #063972 !important;
+    color: #e7ade9 !important;
     font-weight: bold;
 }
 .bg-dark{
-  background-color: rgb(74, 201, 48) !important;
+  background-color: rgb(36, 129, 235) !important;
 }
 .accueilEntete {
   margin: 0 auto;
