@@ -1,12 +1,22 @@
 <template>
     <div>
       <div class="subtitle">
-        <h3>Catégories</h3>
+        <p>Créé ta liste à partir des catégories en cliquant dans celle de ton choix</p>
         </div>
         <div class="listcentrage">
         <ul id="listcat" v-for="item in images" :key="item.image">
           <li  @click="goToCategory(item)"><b-avatar size="120px" square><b-img :src="require('../assets/imagescat/' + item.image + '.jpg')"></b-img></b-avatar></li>
         </ul>
+        <div class="subtitle">
+          <p>Ou créé ta liste libre</p>
+        </div>
+        <div class="freeType">
+         <div>
+          <b-img :src="require('../assets/liste.jpg')" fluid alt="liste" @click="gotoFreeList()"></b-img>
+        </div>
+          <!-- <b-input v-model="articles" placeholder="Saisie libre"/>
+          <b-button @click="addArticle()">Ajoute à ta liste</b-button> -->
+        </div>
         <div class="listbutt">
           <b-button @click="goToList">voir la liste</b-button>
         </div>
@@ -18,6 +28,8 @@ export default {
   name: 'ListeCreat',
   data () {
     return {
+      articles: '',
+      listeEnCours: [],
       pathImage: '../assets/imagescat/',
       images: [
         {image: 'viandes'},
@@ -31,6 +43,9 @@ export default {
         {image: 'animalerie'}
       ]
     }
+  },
+  mounted () {
+    this.listeEnCours = JSON.parse(localStorage.getItem('selected'))
   },
   methods: {
     goToList () {
@@ -52,11 +67,19 @@ export default {
       if (item.image === 'poissonnerie') {
         this.$router.push({name: 'Poissonnerie'})
       }
+    },
+    gotoFreeList () {
+      this.$router.push({name: 'FreeList'})
     }
   }
 }
 </script>
 <style>
+.freeType{
+  margin: 0 auto;
+  width: 122px;
+  margin-bottom: 20px;
+}
 .listbutt{
   margin: 0 auto;
   text-align: center;

@@ -14,12 +14,16 @@ export default {
   name: 'Accueil',
   data () {
     return {
-      selected: []
+      selected: [],
+      freeList: []
     }
   },
   mounted () {
     if (localStorage.getItem('selected') === null) {
       localStorage.setItem('selected', JSON.stringify(this.selected))
+    }
+    if (localStorage.getItem('freeList') === null) {
+      localStorage.setItem('freeList', JSON.stringify(this.freeList))
     }
   },
   methods: {

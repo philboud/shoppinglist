@@ -10,6 +10,7 @@ import Viandes from '@/components/Viandes'
 import Poissonnerie from '@/components/Poissonnerie'
 import Liste from '@/components/Liste'
 import Help from '@/components/Help'
+import FreeList from '@/components/FreeList'
 Vue.use(Router)
 
 export default new Router({
@@ -58,6 +59,11 @@ export default new Router({
       path: '/poissonnerie',
       name: 'Poissonnerie',
       component: Poissonnerie
+    },
+    {
+      path: '/freelist',
+      name: 'FreeList',
+      component: FreeList
     },
     {
       path: '/help',

@@ -5,13 +5,15 @@
     <b-button @click="goToCreat()">Retour à la création</b-button>
     </div>
     <div class="container">
+      <div>
+        <h4>Liste par catégories</h4>
+      </div>
  <b-table id="products" striped hover :fields="fields" :items="selected"></b-table>
     </div>
   </div>
 </template>
 
 <script>
-
 import JSPDF from 'jspdf'
 import 'jspdf-autotable'
 
@@ -29,7 +31,9 @@ export default {
       }
       ],
       selected: [],
-      products: []
+      products: [],
+      selectedTemp: [],
+      freeList: ''
     }
   },
   mounted () {
@@ -43,11 +47,14 @@ export default {
       this.selected = JSON.parse(localStorage.getItem('selected'))
     },
     generatePdf () {
-      const doc = new JSPDF()
+      const doc = new JSPDF({
+        orientation: 'p',
+        unit: 'mm',
+        format: [148, 105]
+      })
       doc.text('liste de courses', 10, 10)
       doc.autoTable({html: '#products'})
       doc.save('a4.pdf')
-      console.log(doc)
     }
   }
 }

@@ -18,7 +18,7 @@
     </div>
     </div>
     <div class="buttSave">
-    <b-button variant="success" @click="goToCat()">Enregistrer</b-button>
+    <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
       <div>
     <b-table striped hover :items="listeEnCours"></b-table>
   </div>
@@ -66,7 +66,6 @@ export default {
       this.$refs['my-modal'].show()
     },
     hideModal () {
-      console.log('qtys', this.qtys)
       if (this.qtys !== null) {
         this.qty = this.qtys
       }

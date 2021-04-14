@@ -18,7 +18,7 @@
     </div>
     </div>
     <div class="buttSave">
-    <b-button variant="success" @click="goToCat()">Enregistrer</b-button>
+    <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
       <div class="tabList">
     <b-table striped hover :items="listeEnCours"></b-table>
   </div>
@@ -35,6 +35,7 @@ export default {
       qty: '',
       selected: null,
       listeEnCours: [],
+      freeList: [],
       options: [
         {value: null, text: 'Selectionne ton produit'},
         {text: 'lait (pack)', value: 'lait (pack)'},

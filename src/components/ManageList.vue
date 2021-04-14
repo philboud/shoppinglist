@@ -28,6 +28,7 @@ export default {
       this.$router.push({name: 'Liste'})
     },
     suppList () {
+      localStorage.removeItem('freeList')
       localStorage.removeItem('selected')
       this.$router.push({name: 'Accueil'})
     }

@@ -52,19 +52,20 @@ export default {
   margin-top: 80px;
   background-color: aquamarine;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .buttSave{
   margin: 0 auto;
   text-align: center;
   width: 200px;
+  margin-bottom: 30px;
 }
 .subtitle{
   margin: 0 auto;
   text-align: center;
-  width: 200px;
+  width: 250px;
   background-color: rgb(92, 213, 243);
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .selectSize{
   width: 250px;
