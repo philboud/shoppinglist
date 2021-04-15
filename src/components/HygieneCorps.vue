@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="subtitle">
-    <h4>Rayon boucherie</h4>
+    <h4>Hygiene du corps</h4>
     </div>
     <div class="articles">
  <div>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: 'Viandes',
+  name: 'HygieneCorps',
   data () {
     return {
       qtys: null,
@@ -37,14 +37,15 @@ export default {
       listeEnCours: [],
       options: [
         {value: null, text: 'Choisis ton produit dans la liste'},
-        {text: 'Boeuf', value: 'Boeuf'},
-        {text: 'Agneau', value: 'Agneau'},
-        {text: 'Mouton', value: 'Mouton'},
-        {text: 'Porc', value: 'Porc'},
-        {text: 'Poulet', value: 'Poulet'},
-        {text: 'canard', value: 'canard'},
-        {text: 'Saucisses', value: 'Saucisses'},
-        {text: 'Rillettes', value: 'Rillettes'}
+        {text: 'Gel douche', value: 'Gel douche'},
+        {text: 'Savon', value: 'Savon'},
+        {text: 'Shampoing', value: 'Shampoing'},
+        {text: 'Dentifrice', value: 'Dentifrice'},
+        {text: 'Crème pour le corps', value: 'Crème pour le corps'},
+        {text: 'Crème pour les mains', value: 'Crème pour les mains'},
+        {text: 'Labello', value: 'Labello'},
+        {text: 'Après-Shampoing', value: 'Après-Shampoing'}
+
       ],
       unites: [{value: null, text: 'Choisis ta quantité'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }

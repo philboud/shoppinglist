@@ -1,14 +1,14 @@
 <template>
 <div>
   <div class="subtitle">
-    <h4>Rayon boucherie</h4>
+    <h4>Puericulture</h4>
     </div>
     <div class="articles">
  <div>
     <b-form-select class="selectSize" v-model="selected" :options="options" @change="addTolist"></b-form-select>
   </div>
   <div>
-    <b-modal ref="my-modal" hide-footer title="Combien en veux tu?" centered>
+    <b-modal ref="my-modal" hide-footer title="Combien en voulez vous?" centered>
       <div class="d-block text-center">
          <b-form-select v-model="qtys" :options="unites"></b-form-select>
          <b-input v-model="qty" placeholder="Ou ecris ce que tu veux!"></b-input>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: 'Viandes',
+  name: 'Puericulture',
   data () {
     return {
       qtys: null,
@@ -36,17 +36,17 @@ export default {
       selected: null,
       listeEnCours: [],
       options: [
-        {value: null, text: 'Choisis ton produit dans la liste'},
-        {text: 'Boeuf', value: 'Boeuf'},
-        {text: 'Agneau', value: 'Agneau'},
-        {text: 'Mouton', value: 'Mouton'},
-        {text: 'Porc', value: 'Porc'},
-        {text: 'Poulet', value: 'Poulet'},
-        {text: 'canard', value: 'canard'},
-        {text: 'Saucisses', value: 'Saucisses'},
-        {text: 'Rillettes', value: 'Rillettes'}
+        {value: null, text: 'Selectionne ton produit'},
+        {text: 'Couche BB', value: 'Couches BB'},
+        {text: 'Lait en poudre BB', value: 'Lait en poudre BB'},
+        {text: 'Petits pots BB', value: 'Petits pots BB'},
+        {text: 'Crème corps BB', value: 'Crème corps BB'},
+        {text: 'Lingettes BB', value: 'Lingettes BB'},
+        {text: 'Biberon', value: 'Biberon'},
+        {text: 'Shampoing BB', value: 'Shampoing BB'},
+        {text: 'Crème fesses BB', value: 'Crème fesses BB'}
       ],
-      unites: [{value: null, text: 'Choisis ta quantité'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
+      unites: [{value: null, text: 'Combien en veux-tu?'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {

@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="subtitle">
-    <h4>Rayon boucherie</h4>
+    <h4>Animalerie</h4>
     </div>
     <div class="articles">
  <div>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: 'Viandes',
+  name: 'Pets',
   data () {
     return {
       qtys: null,
@@ -37,14 +37,14 @@ export default {
       listeEnCours: [],
       options: [
         {value: null, text: 'Choisis ton produit dans la liste'},
-        {text: 'Boeuf', value: 'Boeuf'},
-        {text: 'Agneau', value: 'Agneau'},
-        {text: 'Mouton', value: 'Mouton'},
-        {text: 'Porc', value: 'Porc'},
-        {text: 'Poulet', value: 'Poulet'},
-        {text: 'canard', value: 'canard'},
-        {text: 'Saucisses', value: 'Saucisses'},
-        {text: 'Rillettes', value: 'Rillettes'}
+        {text: 'Nourriture chien', value: 'Nourriture chien'},
+        {text: 'Nourriture chat', value: 'Nourriture chat'},
+        {text: 'Litière chat', value: 'Litière chat'},
+        {text: 'Nourriture lapin', value: 'Nourriture lapin'},
+        {text: 'Foin', value: 'Foin'},
+        {text: 'Copeaux litière lapin', value: 'Copeaux litière lapin'},
+        {text: 'Jouets animaux', value: 'Jouet animaux'},
+        {text: 'Friandises animaux', value: 'Friandises animaux'}
       ],
       unites: [{value: null, text: 'Choisis ta quantité'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }

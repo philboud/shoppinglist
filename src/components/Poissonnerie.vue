@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="subtitle">
-      <h4>Poissonerie</h4>
+      <h4>Rayon poissonerie</h4>
     </div>
     <div class="articles">
  <div>
@@ -19,10 +19,10 @@
     </div>
     <div class="buttSave">
     <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
-      <div>
+    </div>
+      <div class="tabList">
     <b-table striped hover :items="listeEnCours"></b-table>
-  </div>
-  </div>
+    </div>
   </div>
 </template>
 

@@ -72,6 +72,6 @@ export default {
 }
 .tabList{
   margin: 0 auto;
-  width: 200px;
+  width: 400px;
 }
 </style>

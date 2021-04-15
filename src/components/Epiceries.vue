@@ -19,10 +19,10 @@
     </div>
     <div class="buttSave">
     <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
+    </div>
       <div class="tabList">
     <b-table striped hover :items="listeEnCours"></b-table>
-  </div>
-  </div>
+    </div>
   </div>
 </template>
 

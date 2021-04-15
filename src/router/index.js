@@ -11,6 +11,11 @@ import Poissonnerie from '@/components/Poissonnerie'
 import Liste from '@/components/Liste'
 import Help from '@/components/Help'
 import FreeList from '@/components/FreeList'
+import HygieneCorps from '@/components/HygieneCorps'
+import Linge from '@/components/Linge'
+import Puericulture from '@/components/Puericulture'
+import Pets from '@/components/Pets'
+
 Vue.use(Router)
 
 export default new Router({
@@ -59,6 +64,26 @@ export default new Router({
       path: '/poissonnerie',
       name: 'Poissonnerie',
       component: Poissonnerie
+    },
+    {
+      path: '/hygienecorps',
+      name: 'HygieneCorps',
+      component: HygieneCorps
+    },
+    {
+      path: '/linge',
+      name: 'Linge',
+      component: Linge
+    },
+    {
+      path: '/puericulture',
+      name: 'Puericulture',
+      component: Puericulture
+    },
+    {
+      path: '/pets',
+      name: 'Pets',
+      component: Pets
     },
     {
       path: '/freelist',

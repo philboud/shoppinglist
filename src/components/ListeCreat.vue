@@ -67,6 +67,18 @@ export default {
       if (item.image === 'poissonnerie') {
         this.$router.push({name: 'Poissonnerie'})
       }
+      if (item.image === 'hygiene') {
+        this.$router.push({name: 'HygieneCorps'})
+      }
+      if (item.image === 'linges') {
+        this.$router.push({name: 'Linge'})
+      }
+      if (item.image === 'puericulture') {
+        this.$router.push({name: 'Puericulture'})
+      }
+      if (item.image === 'animalerie') {
+        this.$router.push({name: 'Pets'})
+      }
     },
     gotoFreeList () {
       this.$router.push({name: 'FreeList'})
