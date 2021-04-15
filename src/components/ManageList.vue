@@ -7,9 +7,6 @@
       <div class="look">
         <b-button class="butt" @click="goToList()" variant="primary">Voir la liste</b-button>
       </div>
-          <div class="supp">
-        <b-button class="butt" variant="primary">Modifier la liste</b-button>
-      </div>
       <div class="supp">
         <b-button class="butt" @click="suppList()" variant="primary">supprimer la liste</b-button>
       </div>

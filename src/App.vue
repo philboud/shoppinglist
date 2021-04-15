@@ -35,7 +35,7 @@ export default {
 </script>
 <style>
 .articles{
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-left: 20px;
   font-size: 2em;
 }
@@ -49,23 +49,23 @@ export default {
 .accueilEntete {
   margin: 0 auto;
   width: 250px;
-  margin-top: 80px;
+  margin-top: 70px;
   background-color: aquamarine;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .buttSave{
   margin: 0 auto;
   text-align: center;
   width: 200px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .subtitle{
   margin: 0 auto;
   text-align: center;
   width: 250px;
   background-color: rgb(92, 213, 243);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .selectSize{
   width: 250px;

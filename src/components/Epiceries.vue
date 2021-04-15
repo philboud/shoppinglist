@@ -21,7 +21,17 @@
     <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
     </div>
       <div class="tabList">
-    <b-table striped hover :items="listeEnCours"></b-table>
+    <b-table striped hover :items="listeEnCours" :fields="fields">
+      <template v-slot:cell(produit)="row">
+        <b-form-input v-model="row.item.produit"/>
+      </template>
+      <template v-slot:cell(qty)="row">
+        <b-form-input v-model="row.item.qty"/>
+      </template>
+      <template v-slot:cell(action)="row">
+        <b-icon icon="trash" style="width: 30px; height: 30px;" @click="deleteItem(row.index)"></b-icon>
+        </template>
+    </b-table>
     </div>
   </div>
 </template>
@@ -36,6 +46,19 @@ export default {
       selected: null,
       listeEnCours: [],
       freeList: [],
+      fields: [ {
+        key: 'produit',
+        label: 'Produits'
+      },
+      {
+        key: 'qty',
+        label: 'Quantité'
+      },
+      {
+        key: 'action',
+        label: ''
+      }
+      ],
       options: [
         {value: null, text: 'Selectionne ton produit'},
         {text: 'lait (pack)', value: 'lait (pack)'},
@@ -65,6 +88,9 @@ export default {
     },
     showModal () {
       this.$refs['my-modal'].show()
+    },
+    deleteItem (index) {
+      this.listeEnCours.splice(index, 1)
     },
     hideModal () {
       if (this.qtys !== null) {

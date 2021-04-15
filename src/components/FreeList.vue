@@ -46,13 +46,14 @@ export default {
       qty: '',
       freeListData: '',
       freeListTab: [],
-      fields: [
-        {
-          key: 'produit'
-        },
-        {
-          key: 'qty'
-        }
+      fields: [ {
+        key: 'produit',
+        label: 'Produits'
+      },
+      {
+        key: 'qty',
+        label: 'Quantité'
+      }
       ],
       dismissSecs1: 3,
       dismissCountDown1: 0,
