@@ -7,18 +7,8 @@
         <ul id="listcat" v-for="item in images" :key="item.image">
           <li  @click="goToCategory(item)"><b-avatar size="120px" square><b-img :src="require('../assets/imagescat/' + item.image + '.jpg')"></b-img></b-avatar></li>
         </ul>
-        <div class="subtitle">
-          <p>Ou créé ta liste libre</p>
-        </div>
-        <div class="freeType">
-         <div>
-          <b-img :src="require('../assets/liste.jpg')" fluid alt="liste" @click="gotoFreeList()"></b-img>
-        </div>
-          <!-- <b-input v-model="articles" placeholder="Saisie libre"/>
-          <b-button @click="addArticle()">Ajoute à ta liste</b-button> -->
-        </div>
         <div class="listbutt">
-          <b-button @click="goToList">voir la liste</b-button>
+          <b-button @click="goToList()">Retour</b-button>
         </div>
       </div>
     </div>
@@ -49,7 +39,7 @@ export default {
   },
   methods: {
     goToList () {
-      this.$router.push({name: 'Liste'})
+      this.$router.push({name: 'ManageList'})
     },
     goToCategory (item) {
       if (item.image === 'epicerie') {
@@ -79,9 +69,6 @@ export default {
       if (item.image === 'animalerie') {
         this.$router.push({name: 'Pets'})
       }
-    },
-    gotoFreeList () {
-      this.$router.push({name: 'FreeList'})
     }
   }
 }

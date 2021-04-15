@@ -10,7 +10,7 @@
   </b-navbar>
   </div>
      <div class="entete">
-      <h1 class="accueilEntete">Shopping list</h1>
+      <h3 class="accueilEntete">Shopping list</h3>
        </div>
     <div>
       <router-view />

@@ -2,7 +2,7 @@
   <div class="entete">
     <p class="layus">petite app pour créer votre liste de courses</p>
         <div class="goMag">
-          <b-button class="butt" @click="goToApp()" variant="primary">Entrer dans le pense-bête</b-button>
+          <b-button class="butt" @click="goToApp()" variant="primary">C'est parti...!</b-button>
         </div>
       <div>
         <b-img :src="require('../assets/panier.png')" class="panierimg"></b-img>
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     goToApp () {
-      this.$router.push({path: '/listecreat'})
+      this.$router.push({path: '/gestionliste'})
     }
   }
 }
@@ -52,6 +52,6 @@ export default {
 }
 .goMag{
   margin: 0 auto;
-  width: 200px;
+  width: 180px;
 }
 </style>

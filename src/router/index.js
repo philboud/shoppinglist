@@ -15,6 +15,7 @@ import HygieneCorps from '@/components/HygieneCorps'
 import Linge from '@/components/Linge'
 import Puericulture from '@/components/Puericulture'
 import Pets from '@/components/Pets'
+import EssentielList from '@/components/ListeEssentiels'
 
 Vue.use(Router)
 
@@ -89,6 +90,11 @@ export default new Router({
       path: '/freelist',
       name: 'FreeList',
       component: FreeList
+    },
+    {
+      path: '/essentiel',
+      name: 'EssentielList',
+      component: EssentielList
     },
     {
       path: '/help',

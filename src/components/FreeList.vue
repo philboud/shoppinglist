@@ -5,7 +5,16 @@
       </div>
       <div>
         <div class="buttSave">
-          <b-button variant="success" @click="goToCat()">Enregistre la liste</b-button>
+          <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
+            <b-alert
+              :show="dismissCountDown3"
+              dismissible
+              fade
+              variant="warning"
+              @dismiss-count-down="countDownChanged3"
+            >
+              tu n'as pas ajouté l'article à ta liste...!
+            </b-alert>
         </div>
           <b-input type="text" v-model="freeListData" placeholder="Ecris tes articles ici"></b-input>
             <b-alert
@@ -31,9 +40,17 @@
             <b-button variant="success" @click="addToFreeList()">Ajoute à ta liste</b-button>
           </div>
         </div>
-        <div >
-          <b-table id="products" striped hover :fields="fields" :items="freeListTab"></b-table>
-        </div>
+    <b-table striped hover :items="freeListTab" :fields="fields">
+      <template v-slot:cell(produit)="row">
+        <b-form-input v-model="row.item.produit"/>
+      </template>
+      <template v-slot:cell(qty)="row">
+        <b-form-input v-model="row.item.qty"/>
+      </template>
+      <template v-slot:cell(action)="row">
+        <b-icon icon="trash" style="width: 30px; height: 30px;" @click="deleteItem(row.index)"></b-icon>
+        </template>
+    </b-table>
     </div>
 </template>
 
@@ -53,12 +70,18 @@ export default {
       {
         key: 'qty',
         label: 'Quantité'
+      },
+      {
+        key: 'action',
+        label: ''
       }
       ],
       dismissSecs1: 3,
       dismissCountDown1: 0,
       dismissSecs2: 3,
-      dismissCountDown2: 0
+      dismissCountDown2: 0,
+      dismissSecs3: 3,
+      dismissCountDown3: 0
     }
   },
   mounted () {
@@ -75,7 +98,13 @@ export default {
       this.dismissCountDown2 = dismissCountDown
     },
     showAlert2 () {
-      this.dismissCountDown2 = this.dismissSecs1
+      this.dismissCountDown2 = this.dismissSecs2
+    },
+    countDownChanged3 (dismissCountDown) {
+      this.dismissCountDown3 = dismissCountDown
+    },
+    showAlert3 () {
+      this.dismissCountDown3 = this.dismissSecs3
     },
     addToFreeList () {
       if (this.freeListData === '') {
@@ -89,9 +118,16 @@ export default {
         this.freeListData = ''
       }
     },
+    deleteItem (index) {
+      this.freeListTab.splice(index, 1)
+    },
     goToCat () {
-      localStorage.setItem('selected', JSON.stringify(this.freeListTab))
-      this.$router.push({name: 'ListeCreat'})
+      if ((this.freeListData !== '' && this.qty !== '') || (this.freeListData !== '') || (this.qty !== '')) {
+        this.showAlert3()
+      } else {
+        localStorage.setItem('selected', JSON.stringify(this.freeListTab))
+        this.$router.push({name: 'ManageList'})
+      }
     }
   }
 }
