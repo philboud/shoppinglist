@@ -99,8 +99,7 @@ export default {
       this.selected.splice(index, 1)
     },
     getData () {
-      this.selectedTemp = JSON.parse(localStorage.getItem('selected'))
-      console.log('tab', this.selected)
+      this.selected = JSON.parse(localStorage.getItem('selected'))
     },
     generatePdf () {
       const doc = new JSPDF({
