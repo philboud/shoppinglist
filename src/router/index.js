@@ -16,6 +16,7 @@ import Linge from '@/components/Linge'
 import Puericulture from '@/components/Puericulture'
 import Pets from '@/components/Pets'
 import EssentielList from '@/components/ListeEssentiels'
+import ModeCourses from '@/components/ModeCourses'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/gestionliste',
       name: 'ManageList',
       component: ManageList
+    },
+    {
+      path: '/modecourses',
+      name: 'ModeCourses',
+      component: ModeCourses
     },
     {
       path: '/epicerie',

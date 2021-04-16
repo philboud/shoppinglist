@@ -23,6 +23,9 @@
       <div class="look">
         <b-button class="butt" @click="goToList()" variant="primary">Voir la liste</b-button>
       </div>
+      <div class="look">
+        <b-button class="butt" @click="goToCourses()" variant="primary">Passe en mode courses</b-button>
+      </div>
       <div class="supp">
         <b-button class="butt" @click="suppList()" variant="primary">supprimer la liste</b-button>
       </div>
@@ -45,6 +48,9 @@ export default {
     },
     gotoFastList () {
       this.$router.push({name: 'EssentielList'})
+    },
+    goToCourses () {
+      this.$router.push({name: 'ModeCourses'})
     },
     suppList () {
       localStorage.removeItem('freeList')

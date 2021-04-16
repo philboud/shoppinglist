@@ -20,9 +20,6 @@
         <h4>Ta p'tite liste de courses!!!</h4>
       </div>
  <b-table id="products" striped hover :fields="fields" :items="selected">
-      <template v-if="!visible" v-slot:cell(checkbox)>
-        <b-form-checkbox></b-form-checkbox>
-      </template>
       <template v-if="visible" v-slot:cell(produit)="row">
         <b-form-input v-model="row.item.produit"/>
       </template>
@@ -47,10 +44,6 @@ export default {
     return {
       visible: false,
       fields: [ {
-        key: 'checkbox',
-        label: ''
-      },
-      {
         key: 'produit',
         label: 'Produits'
       },
