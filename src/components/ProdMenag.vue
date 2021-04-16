@@ -4,14 +4,32 @@
     <h4>Produit maison entretien</h4>
     </div>
     <div class="articles">
- <div>
+ <div class="selectInList">
     <b-form-select class="selectSize" v-model="selected" :options="options" @change="addTolist"></b-form-select>
   </div>
   <div>
-    <b-modal ref="my-modal" hide-footer title="Combien en voulez vous?" centered>
+    <b-modal ref="my-modal" hide-footer title="Combien en veux tu?" centered>
       <div class="d-block text-center">
          <b-form-select v-model="qtys" :options="unites"></b-form-select>
+            <b-alert
+              :show="dismissCountDown1"
+              dismissible
+              fade
+              variant="warning"
+              @dismiss-count-down="countDownChanged1"
+            >
+            Selectionne combien tu en veux...?
+            </b-alert>
          <b-input v-model="qty" placeholder="Ou ecris ce que tu veux!"></b-input>
+            <b-alert
+              :show="dismissCountDown2"
+              dismissible
+              fade
+              variant="warning"
+              @dismiss-count-down="countDownChanged2"
+            >
+            Ou écris combien tu en veux...?
+            </b-alert>
       </div>
       <b-button class="mt-3" variant="success" block @click="hideModal">Validez!</b-button>
         </b-modal>
@@ -41,6 +59,10 @@ export default {
   name: 'ProdMenag',
   data () {
     return {
+      dismissSecs1: 3,
+      dismissCountDown1: 0,
+      dismissSecs2: 3,
+      dismissCountDown2: 0,
       qtys: null,
       qty: '',
       selected: null,
@@ -76,6 +98,18 @@ export default {
     this.listeEnCours = JSON.parse(localStorage.getItem('selected'))
   },
   methods: {
+    countDownChanged1 (dismissCountDown) {
+      this.dismissCountDown1 = dismissCountDown
+    },
+    showAlert1 () {
+      this.dismissCountDown1 = this.dismissSecs1
+    },
+    countDownChanged2 (dismissCountDown) {
+      this.dismissCountDown2 = dismissCountDown
+    },
+    showAlert2 () {
+      this.dismissCountDown2 = this.dismissSecs2
+    },
     goToCat () {
       localStorage.setItem('selected', JSON.stringify(this.listeEnCours))
       this.$router.push({name: 'ListeCreat'})
@@ -92,16 +126,24 @@ export default {
       this.$refs['my-modal'].show()
     },
     hideModal () {
-      if (this.qtys !== null) {
-        this.qty = this.qtys
+      if (this.qtys === null && this.qty === '') {
+        this.showAlert1()
       }
-      if (this.qty !== '') {
-        this.listeEnCours.push({produit: this.selected, qty: this.qty})
-        this.qty = ''
-        this.qtys = null
-        this.selected = null
+      if (this.qty === '' && this.qtys === null) {
+        this.showAlert2()
+      } else {
+        if (this.qtys !== null) {
+          this.qty = this.qtys
+          this.$refs['my-modal'].hide()
+        }
+        if (this.qty !== '') {
+          this.listeEnCours.push({produit: this.selected, qty: this.qty})
+          this.qty = ''
+          this.qtys = null
+          this.selected = null
+          this.$refs['my-modal'].hide()
+        }
       }
-      this.$refs['my-modal'].hide()
     }
   }
 }

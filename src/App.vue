@@ -39,6 +39,10 @@ export default {
   margin-left: 20px;
   font-size: 2em;
 }
+.selectInList{
+  margin: 0 auto;
+  width: 275px;
+}
 .nav-link{
     color: #e7ade9 !important;
     font-weight: bold;
