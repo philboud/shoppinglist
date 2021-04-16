@@ -1,7 +1,7 @@
 <template>
     <div>
       <div class="subtitle">
-        <h5>Créé une liste rapide avec les produits essentiels (Pas terminée, en cours de codage)</h5>
+        <h5>Créé une liste rapide avec les produits essentiels</h5>
       </div>
       <div>
         <div class="buttSave">
