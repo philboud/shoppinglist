@@ -5,7 +5,7 @@
     </div>
     <div class="articles">
  <div class="selectInList">
-    <b-form-select class="selectSize" v-model="selected" :options="options" @change="addTolist"></b-form-select>
+    <b-form-select class="selectSize" v-model="selected" :options="prodmenager" @change="addTolist"></b-form-select>
   </div>
   <div>
     <b-modal ref="my-modal" hide-footer title="Combien en veux tu?" centered>
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import json from '../json/prodmenager.json'
+
 export default {
   name: 'ProdMenag',
   data () {
@@ -80,22 +82,13 @@ export default {
         label: ''
       }
       ],
-      options: [
-        {value: null, text: 'Selectionne ton produit'},
-        {text: 'Javel', value: 'Javel'},
-        {text: 'Produit vitres', value: 'Produit vitres'},
-        {text: 'lessive', value: 'lessive'},
-        {text: 'Pastilles lave-vaisselle', value: 'Pastilles lave-vaisselle'},
-        {text: 'Detergent', value: 'Detergent'},
-        {text: 'lingettes', value: 'lingettes'},
-        {text: 'PQ', value: 'PQ'},
-        {text: 'Sopalain', value: 'Sopalain'}
-      ],
+      prodmenager: [],
       unites: [{value: null, text: 'Combien en veux-tu?'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {
     this.listeEnCours = JSON.parse(localStorage.getItem('selected'))
+    this.prodmenager = json
   },
   methods: {
     countDownChanged1 (dismissCountDown) {

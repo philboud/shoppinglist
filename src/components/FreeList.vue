@@ -109,9 +109,6 @@ export default {
     addToFreeList () {
       if (this.freeListData === '') {
         this.showAlert1()
-      }
-      if (this.qty === '') {
-        this.showAlert2()
       } else {
         this.freeListTab.push({produit: this.freeListData, qty: this.qty})
         this.qty = ''

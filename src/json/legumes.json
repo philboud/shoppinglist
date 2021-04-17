@@ -1,0 +1,20 @@
+[
+    {"value": null, "text": "Selectionne ton produit"},
+    {"text": "Pommes", "value": "Pommes"},
+    {"text": "Poires", "value": "Poires"},
+    {"text": "Bananes", "value": "Bananes"},
+    {"text": "Oranges", "value": "Oranges"},
+    {"text": "Pamplemousses", "value": "Pamplemousses"},
+    {"text": "Prunes", "value": "Prunes"},
+    {"text": "Clémentines", "value": "Clémentines"},
+    {"text": "Raisin", "value": "Raisin"},
+    {"text": "Litchis", "value": "Litchis"},
+    {"text": "Pommes de terre", "value": "Pommes de terre"},
+    {"text": "Carottes", "value": "Carottes"},
+    {"text": "Poireaux", "value": "Poireaux"},
+    {"text": "Salade", "value": "Salade"},
+    {"text": "Endives", "value": "Endives"},
+    {"text": "Choux blanc", "value": "Choux blanc"},
+    {"text": "Choux vert", "value": "Choux vert"},
+    {"text": "Choux rouge", "value": "Choux rouge"}
+  ]

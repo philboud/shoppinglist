@@ -5,7 +5,7 @@
     </div>
     <div class="articles">
  <div class="selectInList">
-    <b-form-select class="selectSize" v-model="selected" :options="options" @change="addTolist"></b-form-select>
+    <b-form-select class="selectSize" v-model="selected" :options="viandes" @change="addTolist"></b-form-select>
   </div>
   <div>
     <b-modal ref="my-modal" hide-footer title="Combien en veux tu?" centered>
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import json from '../json/viandes.json'
+
 export default {
   name: 'Viandes',
   data () {
@@ -80,22 +82,13 @@ export default {
         label: ''
       }
       ],
-      options: [
-        {value: null, text: 'Selectionne ton produit'},
-        {text: 'Boeuf', value: 'Boeuf'},
-        {text: 'Agneau', value: 'Agneau'},
-        {text: 'Mouton', value: 'Mouton'},
-        {text: 'Porc', value: 'Porc'},
-        {text: 'Poulet', value: 'Poulet'},
-        {text: 'canard', value: 'canard'},
-        {text: 'Saucisses', value: 'Saucisses'},
-        {text: 'Rillettes', value: 'Rillettes'}
-      ],
+      viandes: [],
       unites: [{value: null, text: 'Choisis ta quantité'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {
     this.listeEnCours = JSON.parse(localStorage.getItem('selected'))
+    this.viandes = json
   },
   methods: {
     countDownChanged1 (dismissCountDown) {

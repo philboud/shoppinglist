@@ -5,7 +5,7 @@
     </div>
     <div class="articles">
  <div class="selectInList">
-    <b-form-select class="selectSize" v-model="selected" :options="options" @change="addTolist"></b-form-select>
+    <b-form-select class="selectSize" v-model="selected" :options="hygiene" @change="addTolist"></b-form-select>
   </div>
   <div>
     <b-modal ref="my-modal" hide-footer title="Combien en veux tu?" centered>
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import json from '../json/hygiene.json'
+
 export default {
   name: 'HygieneCorps',
   data () {
@@ -80,23 +82,13 @@ export default {
         label: ''
       }
       ],
-      options: [
-        {value: null, text: 'Selectionne ton produit'},
-        {text: 'Gel douche', value: 'Gel douche'},
-        {text: 'Savon', value: 'Savon'},
-        {text: 'Shampoing', value: 'Shampoing'},
-        {text: 'Dentifrice', value: 'Dentifrice'},
-        {text: 'Crème pour le corps', value: 'Crème pour le corps'},
-        {text: 'Crème pour les mains', value: 'Crème pour les mains'},
-        {text: 'Labello', value: 'Labello'},
-        {text: 'Après-Shampoing', value: 'Après-Shampoing'}
-
-      ],
+      hygiene: [],
       unites: [{value: null, text: 'Choisis ta quantité'}, '1', '1 litre', '1 kg', '2', '2 litre', '2 kg', '3', '3 litre', '3 kg', '4', '4 litre', '4 kg']
     }
   },
   mounted () {
     this.listeEnCours = JSON.parse(localStorage.getItem('selected'))
+    this.hygiene = json
   },
   methods: {
     countDownChanged1 (dismissCountDown) {

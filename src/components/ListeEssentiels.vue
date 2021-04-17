@@ -62,8 +62,8 @@ export default {
         {text: 'Eaux', value: 'Eaux'},
         {text: 'Lait', value: 'Lait'},
         {text: 'Huile', value: 'Huile'},
-        {text: 'Vinaire', value: 'Vinaire'},
-        {text: 'Mayonnaise', value: 'Farine'},
+        {text: 'Vinaire', value: 'Vinaigre'},
+        {text: 'Mayonnaise', value: 'Mayonnaise'},
         {text: 'Ketchup', value: 'Ketchup'},
         {text: 'Pain', value: 'Pain'}
       ]

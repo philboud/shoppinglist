@@ -1,0 +1,38 @@
+    [
+        {
+            "value": null,
+            "text": "Selectionne ton produit"
+        },
+        {
+            "text": "lait (pack)",
+            "value": "lait (pack)"
+        },
+        {
+            "text": "eau (pack)",
+            "value": "eau (pack)"
+        },
+        {
+            "text": "farine",
+            "value": "farine"
+        },
+        {
+            "text": "beurre",
+            "value": "beurre"
+        },
+        {
+            "text": "oeufs",
+            "value": "oeufs"
+        },
+        {
+            "text": "sel",
+            "value": "sel"
+        },
+        {
+            "text": "poivre",
+            "value": "poivre"
+        },
+        {
+            "text": "pates",
+            "value": "pates"
+        }
+    ]

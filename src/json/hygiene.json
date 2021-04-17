@@ -1,0 +1,11 @@
+[
+    {"value": null, "text": "Selectionne ton produit"},
+    {"text": "Gel douche", "value": "Gel douche"},
+    {"text": "Savon", "value": "Savon"},
+    {"text": "Shampoing", "value": "Shampoing"},
+    {"text": "Dentifrice", "value": "Dentifrice"},
+    {"text": "Creme pour le corps", "value": "Creme pour le corps"},
+    {"text": "Creme pour les mains", "value": "Creme pour les mains"},
+    {"text": "Labello", "value": "Labello"},
+    {"text": "Après-Shampoing", "value": "Après-Shampoing"}
+  ]
