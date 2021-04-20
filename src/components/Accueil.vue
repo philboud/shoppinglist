@@ -10,20 +10,31 @@
     </div>
 </template>
 <script>
+import json from '../../static/global.json'
+
 export default {
   name: 'Accueil',
   data () {
     return {
       selected: [],
-      freeList: []
+      freeList: [],
+      global: [],
+      listePerso: []
     }
   },
   mounted () {
+    if (localStorage.getItem('global') === null) {
+      this.global = (json)
+      localStorage.setItem('global', JSON.stringify(this.global))
+    }
     if (localStorage.getItem('selected') === null) {
       localStorage.setItem('selected', JSON.stringify(this.selected))
     }
     if (localStorage.getItem('freeList') === null) {
       localStorage.setItem('freeList', JSON.stringify(this.freeList))
+    }
+    if (localStorage.getItem('listePerso') === null) {
+      localStorage.setItem('listePerso', JSON.stringify(this.listePerso))
     }
   },
   methods: {

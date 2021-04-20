@@ -17,6 +17,7 @@ import Puericulture from '@/components/Puericulture'
 import Pets from '@/components/Pets'
 import EssentielList from '@/components/ListeEssentiels'
 import ModeCourses from '@/components/ModeCourses'
+import Parametrages from '@/components/Parametrages'
 
 Vue.use(Router)
 
@@ -101,6 +102,11 @@ export default new Router({
       path: '/essentiel',
       name: 'EssentielList',
       component: EssentielList
+    },
+    {
+      path: '/parametrages',
+      name: 'Parametrages',
+      component: Parametrages
     },
     {
       path: '/help',

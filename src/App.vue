@@ -5,6 +5,7 @@
     <b-navbar-nav>
       <b-nav-item href="#/">Accueil</b-nav-item>
       <b-nav-item href="#/gestionliste">Gestion de liste</b-nav-item>
+      <b-nav-item href="#/parametrages">Paramétrages</b-nav-item>
       <b-nav-item href="#/help">help</b-nav-item>
     </b-navbar-nav>
   </b-navbar>
@@ -34,6 +35,13 @@ export default {
 }
 </script>
 <style>
+.buttonSave{
+  position: fixed;
+  margin: 0 auto;
+  margin-left: 25%;
+  margin-top: -80px;
+  width: 200px;
+}
 .articles{
   margin-bottom: 10px;
   margin-left: 20px;

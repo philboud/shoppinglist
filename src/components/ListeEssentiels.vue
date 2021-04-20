@@ -1,10 +1,15 @@
 <template>
     <div>
+      <div class="alignDiv">
       <div class="subtitle">
         <h5>Créé une liste rapide avec les produits essentiels</h5>
       </div>
+      <div class="itemRunner">
+          <b-img :src="require('../assets/roadrunner.jpg')" fluid alt="liste" @click="gotoFastList()"></b-img>
+      </div>
+      </div>
       <div>
-        <div class="buttSave">
+        <div class="buttonSave">
           <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
             <b-alert
               :show="dismissCountDown3"
@@ -17,11 +22,13 @@
             </b-alert>
         </div>
         </div>
+      <div class="tablePosition">
     <b-table striped hover :items="essentielsTab" :fields="fields" >
       <template v-slot:cell(checkbox)="row">
         <b-form-checkbox @change="clickRow(row.item)"></b-form-checkbox>
       </template>
     </b-table>
+    </div>
     </div>
 </template>
 
@@ -30,10 +37,11 @@ export default {
   name: 'EssentielList',
   data () {
     return {
-      selected: [],
       qty: '',
       freeListTab: [],
       freeListTabTmp: [],
+      listePerso: [],
+      liste: [],
       fields: [ {
         key: 'value',
         label: 'Produits'
@@ -70,7 +78,12 @@ export default {
     }
   },
   mounted () {
-    this.freeListTab = JSON.parse(localStorage.getItem('selected'))
+    this.listePerso = JSON.parse(localStorage.getItem('listePerso'))
+    if (this.listePerso.length === 0) {
+      this.essentielsTab = this.essentielsTab
+    } else {
+      this.essentielsTab = this.listePerso
+    }
   },
   methods: {
     countDownChanged3 (dismissCountDown) {
@@ -95,6 +108,24 @@ export default {
 </script>
 
 <style>
+.tablePosition{
+  margin-top: 50px;
+}
+  .buttonSave{
+  position: fixed;
+  margin: 0 auto;
+  margin-left: 25%;
+  margin-top: 0px;
+  width: 200px;
+}
+.alignDiv{
+  display: flex;
+  margin: 0 auto;
+  width: 300px;
+}
+.itemRunner{
+  width: 56px;
+}
 .qtysize{
     width: 130px;
 }
