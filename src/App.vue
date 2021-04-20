@@ -1,13 +1,16 @@
 <template>
   <div id="app">
     <div>
-  <b-navbar type="dark" variant="dark" fixed="top">
+  <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    <b-collapse id="nav-collapse" is-nav>
     <b-navbar-nav>
       <b-nav-item href="#/">Accueil</b-nav-item>
       <b-nav-item href="#/gestionliste">Gestion de liste</b-nav-item>
       <b-nav-item href="#/parametrages">Paramétrages</b-nav-item>
       <b-nav-item href="#/help">help</b-nav-item>
     </b-navbar-nav>
+    </b-collapse>
   </b-navbar>
   </div>
      <div class="entete">
