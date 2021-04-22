@@ -9,6 +9,7 @@ import FruitLeg from '@/components/LegumesFruits'
 import Viandes from '@/components/Viandes'
 import Poissonnerie from '@/components/Poissonnerie'
 import Liste from '@/components/Liste'
+import ListeFast from '@/components/ListeFast'
 import Help from '@/components/Help'
 import FreeList from '@/components/FreeList'
 import HygieneCorps from '@/components/HygieneCorps'
@@ -17,6 +18,7 @@ import Puericulture from '@/components/Puericulture'
 import Pets from '@/components/Pets'
 import EssentielList from '@/components/ListeEssentiels'
 import ModeCourses from '@/components/ModeCourses'
+import ModeFastCourse from '@/components/ModeCoursesRapide'
 import Parametrages from '@/components/Parametrages'
 
 Vue.use(Router)
@@ -44,6 +46,11 @@ export default new Router({
       component: ModeCourses
     },
     {
+      path: '/modecoursesrapide',
+      name: 'ModeFastCourse',
+      component: ModeFastCourse
+    },
+    {
       path: '/epicerie',
       name: 'Epicerie',
       component: Epicerie
@@ -67,6 +74,11 @@ export default new Router({
       path: '/liste',
       name: 'Liste',
       component: Liste
+    },
+    {
+      path: '/fastlist',
+      name: 'ListeFast',
+      component: ListeFast
     },
     {
       path: '/poissonnerie',

@@ -1,47 +1,98 @@
 <template>
   <div>
     <div class="corpus">
-              <div class="subtitle">
-          <p>Choisis ton type de liste</p>
-        </div>
+      <div class="subtitle">
+        <p>Choisis ton type de liste</p>
+      </div>
       <div class="create">
         <div id="container">
           <div class="item">
             <p>Par catégorie</p>
-            <b-img :src="require('../assets/cat.jpg')" fluid alt="liste"  @click="gotoListCrea()"></b-img>
-         </div>
-         <div class="item">
-           <p>Liste libre</p>
-           <b-img :src="require('../assets/liste.jpg')" fluid alt="liste" @click="gotoFreeList()"></b-img>
+            <b-img
+              :src="require('../assets/cat.jpg')"
+              fluid
+              alt="liste"
+              @click="gotoListCrea()"
+            ></b-img>
+          </div>
+          <div class="item">
+            <p>Liste libre</p>
+            <b-img
+              :src="require('../assets/liste.jpg')"
+              fluid
+              alt="liste"
+              @click="gotoFreeList()"
+            ></b-img>
+          </div>
+          <div class="item">
+            <p>Liste rapide</p>
+            <b-img
+              :src="require('../assets/roadrunner.jpg')"
+              fluid
+              alt="liste"
+              @click="gotoFastList()"
+            ></b-img>
+          </div>
         </div>
-        <div class="item">
-          <p>Liste rapide</p>
-          <b-img :src="require('../assets/roadrunner.jpg')" fluid alt="liste" @click="gotoFastList()"></b-img>
+      </div>
+      <div class="look">
+        <div>
+          <b-button class="butt" @click="goToList()" variant="primary"
+            >Voir la liste par catégorie ou libre</b-button
+          >
+        </div>
+        <div>
+          <b-button class="butt" @click="goToFastList()" variant="primary"
+            >Voir la liste rapide</b-button
+          >
         </div>
       </div>
-      </div >
       <div class="look">
-        <b-button class="butt" @click="goToList()" variant="primary">Voir la liste</b-button>
+        <div>
+          <b-button class="butt" @click="goToCourses()" variant="primary"
+            >Passe en mode grosses courses</b-button
+          >
+        </div>
+        <div class="look">
+          <b-button class="butt" @click="goToFastCourses()" variant="primary"
+            >Passe en mode courses rapides</b-button
+          >
+        </div>
       </div>
       <div class="look">
-        <b-button class="butt" @click="goToCourses()" variant="primary">Passe en mode courses</b-button>
-      </div>
-      <div class="supp">
-        <b-button class="butt" @click="suppList()" variant="primary">supprimer la liste</b-button>
-      </div>
+        <div class="supp">
+          <b-button class="butt" @click="suppList()" variant="primary"
+            >supprimer la grosse liste</b-button
+          >
+        </div>
+        <div class="supp">
+          <b-button class="butt" @click="suppFastList()" variant="primary"
+            >supprimer la liste rapide</b-button
+          >
+        </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'ManageList',
+  data () {
+    return {
+      selected: [],
+      selectedFast: []
+    }
+  },
   methods: {
     gotoListCrea () {
       this.$router.push({ name: 'ListeCreat' })
     },
     goToList () {
       this.$router.push({name: 'Liste'})
+    },
+    goToFastList () {
+      this.$router.push({name: 'ListeFast'})
     },
     gotoFreeList () {
       this.$router.push({name: 'FreeList'})
@@ -52,14 +103,19 @@ export default {
     goToCourses () {
       this.$router.push({name: 'ModeCourses'})
     },
+    goToFastCourses () {
+      this.$router.push({name: 'ModeFastCourse'})
+    },
     suppList () {
-      localStorage.removeItem('freeList')
       localStorage.removeItem('selected')
-      this.$router.push({name: 'Accueil'})
+      localStorage.setItem('selected', JSON.stringify(this.selected))
+    },
+    suppFastList () {
+      localStorage.removeItem('selectedFast')
+      localStorage.setItem('selectedFast', JSON.stringify(this.selectedFast))
     }
   }
 }
-
 </script>
 <style>
 .layus {
@@ -80,8 +136,11 @@ export default {
   margin-top: 20px;
   text-align: center;
 }
+.look{
+  display: inline-flex;
+}
 .butt {
-  min-width: 150px;
+  max-width: 150px;
   margin-left: 10px;
   margin-top: 20px;
 }

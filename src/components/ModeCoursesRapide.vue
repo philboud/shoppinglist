@@ -5,9 +5,9 @@
     </div>
     <div class="container">
       <div class="subtitle">
-        <h4>C'est parti pour grosses les courses!!!</h4>
+        <h4>C'est parti pour les courses rapides!!!</h4>
       </div>
- <b-table :fields="fields" :items="selected">
+ <b-table :fields="fields" :items="selectedFast">
       <template id="products" v-slot:cell(action)="row">
         <b-icon icon="basket" style="width: 30px; height: 30px;" @click="deleteItem(row.index)"></b-icon>
       </template>
@@ -20,7 +20,7 @@
 <script>
 
 export default {
-  name: 'ModeCourse',
+  name: 'ModeFastCourse',
   data () {
     return {
       fields: [ {
@@ -37,27 +37,24 @@ export default {
       }
       ],
       visible: false,
-      selected: [],
+      selectedFast: [],
       products: [],
       selectedTemp: [],
       freeList: ''
     }
   },
   mounted () {
-    this.getData()
+    this.selectedFast = JSON.parse(localStorage.getItem('selectedFast'))
   },
   methods: {
     goToMenu () {
       this.$router.push({name: 'ManageList'})
     },
     deleteItem (index) {
-      this.selected.splice(index, 1)
-      if (this.selected.length === 0) {
+      this.selectedFast.splice(index, 1)
+      if (this.selectedFast.length === 0) {
         this.visible = true
       }
-    },
-    getData () {
-      this.selected = JSON.parse(localStorage.getItem('selected'))
     }
   }
 }

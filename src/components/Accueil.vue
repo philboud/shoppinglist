@@ -17,9 +17,12 @@ export default {
   data () {
     return {
       selected: [],
+      selectedFast: [],
       freeList: [],
       global: [],
-      listePerso: []
+      listePerso: [],
+      listePersoNew: [],
+      essentielTab: []
     }
   },
   mounted () {
@@ -30,11 +33,20 @@ export default {
     if (localStorage.getItem('selected') === null) {
       localStorage.setItem('selected', JSON.stringify(this.selected))
     }
+    if (localStorage.getItem('selectedFast') === null) {
+      localStorage.setItem('selectedFast', JSON.stringify(this.selectedFast))
+    }
     if (localStorage.getItem('freeList') === null) {
       localStorage.setItem('freeList', JSON.stringify(this.freeList))
     }
     if (localStorage.getItem('listePerso') === null) {
       localStorage.setItem('listePerso', JSON.stringify(this.listePerso))
+    }
+    if (localStorage.getItem('listePersoNew') === null) {
+      localStorage.setItem('listePersoNew', JSON.stringify(this.listePersoNew))
+    }
+    if (localStorage.getItem('essentielTab') === null) {
+      localStorage.setItem('essentielTab', JSON.stringify(this.essentielTab))
     }
   },
   methods: {

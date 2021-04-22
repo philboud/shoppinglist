@@ -2,7 +2,7 @@
     <div>
       <div class="alignDiv">
       <div class="subtitle">
-        <h5>Créé une liste rapide avec les produits essentiels</h5>
+        <h5>Créé une liste rapide avec tes produits habituels</h5>
       </div>
       <div class="itemRunner">
           <b-img :src="require('../assets/roadrunner.jpg')" fluid alt="liste" @click="gotoFastList()"></b-img>
@@ -10,22 +10,13 @@
       </div>
       <div>
         <div class="buttonSave">
-          <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
-            <b-alert
-              :show="dismissCountDown3"
-              dismissible
-              fade
-              variant="warning"
-              @dismiss-count-down="countDownChanged3"
-            >
-              tu n'as pas ajouté l'article à ta liste...!
-            </b-alert>
+          <b-button variant="success" @click="goToCat()">Enregistre</b-button>
         </div>
         </div>
       <div class="tablePosition">
-    <b-table striped hover :items="essentielsTab" :fields="fields" >
+    <b-table id="products" striped hover :items="essentielsTab" :fields="fields" >
       <template v-slot:cell(checkbox)="row">
-        <b-form-checkbox @change="clickRow(row.item)"></b-form-checkbox>
+        <b-form-checkbox v-model="row.item.checked" @change="clickRow($event, row.item, row.index)"></b-form-checkbox>
       </template>
     </b-table>
     </div>
@@ -33,14 +24,16 @@
 </template>
 
 <script>
+
 export default {
   name: 'EssentielList',
   data () {
     return {
       qty: '',
-      freeListTab: [],
-      freeListTabTmp: [],
+      fastListTab: [],
       listePerso: [],
+      listePersoNew: [],
+      selectedFastFast: [],
       liste: [],
       fields: [ {
         key: 'value',
@@ -51,57 +44,40 @@ export default {
         label: ''
       }
       ],
-      dismissSecs1: 3,
-      dismissCountDown1: 0,
-      dismissSecs2: 3,
-      dismissCountDown2: 0,
-      dismissSecs3: 3,
-      dismissCountDown3: 0,
-      essentielsTab: [
-        {text: 'Farine', value: 'Farine'},
-        {text: 'Oeuf', value: 'Oeuf'},
-        {text: 'Sucre morceaux', value: 'Sucre morceaux'},
-        {text: 'Sucre poudre', value: 'Sucre poudre'},
-        {text: 'Sel', value: 'Sel'},
-        {text: 'Poivre', value: 'Poivre'},
-        {text: 'Steaks hachés', value: 'Steaks hachés'},
-        {text: 'Pates', value: 'Pates'},
-        {text: 'Alcool', value: 'Alcool'},
-        {text: 'Eaux', value: 'Eaux'},
-        {text: 'Lait', value: 'Lait'},
-        {text: 'Huile', value: 'Huile'},
-        {text: 'Vinaire', value: 'Vinaigre'},
-        {text: 'Mayonnaise', value: 'Mayonnaise'},
-        {text: 'Ketchup', value: 'Ketchup'},
-        {text: 'Pain', value: 'Pain'}
-      ]
+      essentielsTab: []
     }
   },
   mounted () {
     this.listePerso = JSON.parse(localStorage.getItem('listePerso'))
+    localStorage.removeItem('selectedFast')
+    localStorage.setItem('selectedFast', JSON.stringify(this.selectedFast))
+    this.essentielsTab = this.listePerso
     if (this.listePerso.length === 0) {
-      this.essentielsTab = this.essentielsTab
-    } else {
-      this.essentielsTab = this.listePerso
+      this.$router.push({name: 'Parametrages'})
     }
+    this.essentielsTab = this.listePerso
   },
   methods: {
-    countDownChanged3 (dismissCountDown) {
-      this.dismissCountDown3 = dismissCountDown
-    },
-    showAlert3 () {
-      this.dismissCountDown3 = this.dismissSecs3
-    },
-    clickRow (item) {
-      this.freeListTab.push({produit: item.value})
+    clickRow ($event, item, index) {
+      if ($event === true) {
+        this.essentielsTab.slice(index, 1)
+        this.essentielsTab.slice(index, 1, {'text': item.text, 'value': item.value, 'checked': true})
+      }
+      if ($event === false) {
+        this.essentielsTab.slice(index, 1)
+        this.essentielsTab.slice(index, 1, {'text': item.text, 'value': item.value, 'checked': false})
+      }
     },
     goToCat () {
-      if (this.freeListData !== '' && this.qty !== '') {
-        this.showAlert3()
-      } else {
-        localStorage.setItem('selected', JSON.stringify(this.freeListTab))
-        this.$router.push({name: 'ManageList'})
+      for (var j = 0; j < this.essentielsTab.length; j++) {
+        if (this.essentielsTab[j].checked === true) {
+          this.fastListTab.push({produit: this.essentielsTab[j].text})
+        }
       }
+      localStorage.setItem('selectedFast', JSON.stringify(this.fastListTab))
+      localStorage.setItem('listePerso', JSON.stringify(this.essentielsTab))
+      this.fastListTab = []
+      this.$router.push({name: 'ListeFast'})
     }
   }
 }
@@ -114,9 +90,9 @@ export default {
   .buttonSave{
   position: fixed;
   margin: 0 auto;
-  margin-left: 25%;
+  margin-left: 37%;
   margin-top: 0px;
-  width: 200px;
+  width: 300px;
 }
 .alignDiv{
   display: flex;

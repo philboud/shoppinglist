@@ -69,7 +69,6 @@ export default {
       qty: '',
       selected: null,
       listeEnCours: [],
-      freeList: [],
       fields: [ {
         key: 'produit',
         label: 'Produits'
@@ -131,7 +130,7 @@ export default {
           this.$refs['my-modal'].hide()
         }
         if (this.qty !== '') {
-          this.listeEnCours.push({produit: this.selected, qty: this.qty})
+          this.listeEnCours.push({produit: this.selected, qty: this.qty, checked: true})
           this.qty = ''
           this.qtys = null
           this.selected = null

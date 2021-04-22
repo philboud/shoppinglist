@@ -1,5 +1,12 @@
 <template>
     <div>
+      <div class="textExpl">
+      <p>Créé ta liste rapide en choisissant tes produits habituels. si il n'est pas dedans tu peux le créer</p>
+      </div>
+      <div class="newProd">
+        <b-input v-model="newProd" type="text" placeholder="Ajoute ici un produit pas dans ta liste perso"/>
+          <b-button variant="success" @click="saveNewProd()">Ok</b-button>
+      </div>
       <div class="buttonSave">
         <b-button class="mt-3" variant="success"  @click="saveListPerso()">Enregistre et retourne aux listes</b-button>
       </div>
@@ -31,17 +38,20 @@ export default {
       checked: false,
       listePerso: [],
       global: [],
-      globalListe: []
+      globalListe: [],
+      listePersoNew: [],
+      newProd: ''
 
     }
   },
   mounted () {
+    this.listePersoNew = JSON.parse(localStorage.getItem('listePersoNew'))
     this.listePerso = JSON.parse(localStorage.getItem('listePerso'))
     var testArrayGlobalState = JSON.parse(localStorage.getItem('global'))
-    console.log(testArrayGlobalState)
     testArrayGlobalState.length >= 1
       ? this.globalListe = JSON.parse(localStorage.getItem('global'))
       : localStorage.setItem('global', JSON.stringify(this.global))
+    this.globalListe = this.listePersoNew.concat(testArrayGlobalState)
   },
   methods: {
     clickRow ($event, item, index) {
@@ -58,15 +68,30 @@ export default {
         }
       }
     },
+    saveNewProd () {
+      this.listePersoNew.push({'value': this.newProd, 'text': this.newProd})
+      this.globalListe = this.listePersoNew.concat(this.globalListe)
+      this.newProd = ''
+    },
     saveListPerso () {
       localStorage.setItem('global', JSON.stringify(this.globalListe))
       localStorage.setItem('listePerso', JSON.stringify(this.listePerso))
+      console.log('listeperso', this.listePerso)
       this.$router.push({name: 'EssentielList'})
     }
   }
 }
 </script>
 <style>
+.newProd{
+  display: flex;
+  margin: 0 auto;
+  width: 390px;
+}
+.textExpl{
+  margin: 0 auto;
+  width: 350px;
+}
 .selectItem{
   margin-top: 80px;
 }
