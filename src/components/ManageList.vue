@@ -64,11 +64,33 @@
           <b-button class="butt" @click="suppList()" variant="primary"
             >supprimer la grosse liste</b-button
           >
+          <div class="alert">
+            <b-alert
+              :show="dismissCountDown1"
+              dismissible
+              fade
+              variant="warning"
+              @dismiss-count-down="countDownChanged1"
+            >
+              Grosse liste supprimée...!
+            </b-alert>
+            </div>
         </div>
         <div class="supp">
           <b-button class="butt" @click="suppFastList()" variant="primary"
             >supprimer la liste rapide</b-button
           >
+           <div class="alert">
+            <b-alert
+              :show="dismissCountDown2"
+              dismissible
+              fade
+              variant="warning"
+              @dismiss-count-down="countDownChanged2"
+            >
+              Liste rapide supprimée...!
+            </b-alert>
+            </div>
         </div>
       </div>
     </div>
@@ -81,10 +103,26 @@ export default {
   data () {
     return {
       selected: [],
-      selectedFast: []
+      selectedFast: [],
+      dismissSecs1: 1,
+      dismissCountDown1: 0,
+      dismissSecs2: 1,
+      dismissCountDown2: 0
     }
   },
   methods: {
+    countDownChanged1 (dismissCountDown) {
+      this.dismissCountDown1 = dismissCountDown
+    },
+    showAlert1 () {
+      this.dismissCountDown1 = this.dismissSecs1
+    },
+    countDownChanged2 (dismissCountDown) {
+      this.dismissCountDown2 = dismissCountDown
+    },
+    showAlert2 () {
+      this.dismissCountDown2 = this.dismissSecs2
+    },
     gotoListCrea () {
       this.$router.push({ name: 'ListeCreat' })
     },
@@ -109,10 +147,12 @@ export default {
     suppList () {
       localStorage.removeItem('selected')
       localStorage.setItem('selected', JSON.stringify(this.selected))
+      this.showAlert1()
     },
     suppFastList () {
       localStorage.removeItem('selectedFast')
       localStorage.setItem('selectedFast', JSON.stringify(this.selectedFast))
+      this.showAlert2()
     }
   }
 }
@@ -144,5 +184,8 @@ export default {
   min-height: 90px;
   margin-left: 10px;
   margin-top: 20px;
+}
+.alert{
+  max-width: 160px;
 }
 </style>
