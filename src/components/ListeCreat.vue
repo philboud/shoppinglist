@@ -1,17 +1,26 @@
 <template>
-    <div>
-      <div class="subtitle">
-        <p>Créé ta liste à partir des catégories en cliquant dans celle de ton choix</p>
-        </div>
-        <div class="listcentrage">
-        <ul id="listcat" v-for="item in images" :key="item.image">
-          <li  @click="goToCategory(item)"><b-avatar size="120px" square><b-img :src="require('../assets/imagescat/' + item.image + '.jpg')"></b-img></b-avatar></li>
-        </ul>
-        <div class="listbutt">
-          <b-button @click="goToList()">Retour</b-button>
-        </div>
+  <div>
+    <div class="subtitle">
+      <p>
+        Créé ta liste à partir des catégories en cliquant dans celle de ton
+        choix
+      </p>
+    </div>
+    <div class="listcentrage">
+      <ul id="listcat" v-for="item in images" :key="item.image">
+        <li @click="goToCategory(item)">
+          <b-avatar size="120px" square
+            ><b-img
+              :src="require('../assets/imagescat/' + item.image + '.jpg')"
+            ></b-img
+          ></b-avatar>
+        </li>
+      </ul>
+      <div class="listbutt">
+        <b-button @click="goToList()">Retour</b-button>
       </div>
     </div>
+  </div>
 </template>
 <script>
 export default {

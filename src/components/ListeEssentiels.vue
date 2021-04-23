@@ -1,26 +1,40 @@
 <template>
-    <div>
-      <div class="alignDiv">
+  <div>
+    <div class="alignDiv">
       <div class="subtitle">
         <h5>Créé une liste rapide avec tes produits habituels</h5>
       </div>
       <div class="itemRunner">
-          <b-img :src="require('../assets/roadrunner.jpg')" fluid alt="liste" @click="gotoFastList()"></b-img>
+        <b-img
+          :src="require('../assets/roadrunner.jpg')"
+          fluid
+          alt="liste"
+          @click="gotoFastList()"
+        ></b-img>
       </div>
+    </div>
+    <div>
+      <div class="buttonSave">
+        <b-button variant="success" @click="goToCat()">Enregistre</b-button>
       </div>
-      <div>
-        <div class="buttonSave">
-          <b-button variant="success" @click="goToCat()">Enregistre</b-button>
-        </div>
-        </div>
-      <div class="tablePosition">
-    <b-table id="products" striped hover :items="essentielsTab" :fields="fields" >
-      <template v-slot:cell(checkbox)="row">
-        <b-form-checkbox v-model="row.item.checked" @change="clickRow($event, row.item, row.index)"></b-form-checkbox>
-      </template>
-    </b-table>
     </div>
+    <div class="tablePosition">
+      <b-table
+        id="products"
+        striped
+        hover
+        :items="essentielsTab"
+        :fields="fields"
+      >
+        <template v-slot:cell(checkbox)="row">
+          <b-form-checkbox
+            v-model="row.item.checked"
+            @change="clickRow($event, row.item, row.index)"
+          ></b-form-checkbox>
+        </template>
+      </b-table>
     </div>
+  </div>
 </template>
 
 <script>

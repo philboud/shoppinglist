@@ -1,23 +1,35 @@
 <template>
-    <div>
-      <div class="textExpl">
-      <p>Créé ta liste rapide en choisissant tes produits habituels. si il n'est pas dedans tu peux le créer</p>
-      </div>
-      <div class="newProd">
-        <b-input v-model="newProd" type="text" placeholder="Ajoute ici un produit pas dans ta liste perso"/>
-          <b-button variant="success" @click="saveNewProd()">Ok</b-button>
-      </div>
-      <div class="buttonSave">
-        <b-button class="mt-3" variant="success"  @click="saveListPerso()">Enregistre et retourne aux listes</b-button>
-      </div>
+  <div>
+    <div class="textExpl">
+      <p>
+        Créé ta liste rapide en choisissant tes produits habituels. si il n'est
+        pas dedans tu peux le créer
+      </p>
+    </div>
+    <div class="newProd">
+      <b-input
+        v-model="newProd"
+        type="text"
+        placeholder="Ajoute ici un produit pas dans ta liste perso"
+      />
+      <b-button variant="success" @click="saveNewProd()">Ok</b-button>
+    </div>
+    <div class="buttonSave">
+      <b-button class="mt-3" variant="success" @click="saveListPerso()"
+        >Enregistre et retourne aux listes</b-button
+      >
+    </div>
     <div class="selectItem">
-     <b-table striped hover :items="globalListe" :fields="fields" >
-             <template v-slot:cell(checkbox)="row">
-        <b-form-checkbox v-model="row.item.checked" @change="clickRow($event,row.item, row.index)"></b-form-checkbox>
-      </template>
-     </b-table>
+      <b-table striped hover :items="globalListe" :fields="fields">
+        <template v-slot:cell(checkbox)="row">
+          <b-form-checkbox
+            v-model="row.item.checked"
+            @change="clickRow($event, row.item, row.index)"
+          ></b-form-checkbox>
+        </template>
+      </b-table>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>

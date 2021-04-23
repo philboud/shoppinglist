@@ -1,16 +1,20 @@
 <template>
   <div>
     <div class="returnbutt">
-    <b-button @click="goToMenu()">Retour</b-button>
+      <b-button @click="goToMenu()">Retour</b-button>
     </div>
     <div class="container">
       <div class="subtitle">
         <h4>C'est parti pour les courses rapides!!!</h4>
       </div>
- <b-table :fields="fields" :items="selectedFast">
-      <template id="products" v-slot:cell(action)="row">
-        <b-icon icon="basket" style="width: 30px; height: 30px;" @click="deleteItem(row.index)"></b-icon>
-      </template>
+      <b-table :fields="fields" :items="selectedFast">
+        <template id="products" v-slot:cell(action)="row">
+          <b-icon
+            icon="basket"
+            style="width: 30px; height: 30px"
+            @click="deleteItem(row.index)"
+          ></b-icon>
+        </template>
       </b-table>
       <div class="subtitle" v-if="visible"><h1>Courses terminées!</h1></div>
     </div>

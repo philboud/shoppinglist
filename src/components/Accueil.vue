@@ -1,13 +1,17 @@
 <template>
   <div class="entete">
     <p class="layus">petite app pour créer votre liste de courses</p>
-        <div class="goMag">
-          <b-button class="butt" @click="goToApp()" variant="primary">C'est parti...!</b-button>
+    <div class="goMag">
+      <b-button class="butt" @click="goToApp()" variant="primary"
+        >C'est parti...!</b-button>
         </div>
-      <div>
-        <b-img :src="require('../assets/panier.png')" class="panierimg"></b-img>
+        <div class="lievre">
+        <b-img :src="require('../assets/lievre.jpg')" fluid class="lievreimg"></b-img>
       </div>
+    <div>
+      <b-img :src="require('../assets/panier.png')" class="panierimg"></b-img>
     </div>
+  </div>
 </template>
 <script>
 import json from '../../static/global.json'
@@ -75,6 +79,15 @@ export default {
 }
 .goMag{
   margin: 0 auto;
-  width: 180px;
+  width: 120px;
+}
+.goMag:hover{
+  transform:  scale(2);
+  transition: all 330ms ease-in-out;
+}
+.lievre{
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 80px;
 }
 </style>

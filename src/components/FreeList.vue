@@ -1,57 +1,74 @@
 <template>
+  <div>
+    <div class="subtitle">
+      <h2>Liste Libre</h2>
+    </div>
     <div>
-      <div class="subtitle">
-        <h2>Liste Libre</h2>
+      <div class="buttSave">
+        <b-button variant="success" @click="goToCat()"
+          >Enregistre et retourne aux catégories</b-button
+        >
+        <b-alert
+          :show="dismissCountDown3"
+          dismissible
+          fade
+          variant="warning"
+          @dismiss-count-down="countDownChanged3"
+        >
+          tu n'as pas ajouté l'article à ta liste...!
+        </b-alert>
       </div>
+      <b-input
+        type="text"
+        v-model="freeListData"
+        placeholder="Ecris tes articles ici"
+      ></b-input>
+      <b-alert
+        :show="dismissCountDown1"
+        dismissible
+        fade
+        variant="warning"
+        @dismiss-count-down="countDownChanged1"
+      >
+        Tu n'as pas mis d'article...!
+      </b-alert>
       <div>
-        <div class="buttSave">
-          <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
-            <b-alert
-              :show="dismissCountDown3"
-              dismissible
-              fade
-              variant="warning"
-              @dismiss-count-down="countDownChanged3"
-            >
-              tu n'as pas ajouté l'article à ta liste...!
-            </b-alert>
-        </div>
-          <b-input type="text" v-model="freeListData" placeholder="Ecris tes articles ici"></b-input>
-            <b-alert
-              :show="dismissCountDown1"
-              dismissible
-              fade
-              variant="warning"
-              @dismiss-count-down="countDownChanged1"
-            >
-              Tu n'as pas mis d'article...!
-            </b-alert>
-          <div>
-            <input class="qtysize" type="text" v-model="qty" placeholder="Quantité"/>
-              <b-alert
-                :show="dismissCountDown2"
-                dismissible
-                fade
-                variant="warning"
-                @dismiss-count-down="countDownChanged2"
-              >
-                Combien tu en veux...?
-              </b-alert>
-            <b-button variant="success" @click="addToFreeList()">Ajoute à ta liste</b-button>
-          </div>
-        </div>
+        <input
+          class="qtysize"
+          type="text"
+          v-model="qty"
+          placeholder="Quantité"
+        />
+        <b-alert
+          :show="dismissCountDown2"
+          dismissible
+          fade
+          variant="warning"
+          @dismiss-count-down="countDownChanged2"
+        >
+          Combien tu en veux...?
+        </b-alert>
+        <b-button variant="success" @click="addToFreeList()"
+          >Ajoute à ta liste</b-button
+        >
+      </div>
+    </div>
     <b-table striped hover :items="freeListTab" :fields="fields">
       <template v-slot:cell(produit)="row">
-        <b-form-input v-model="row.item.produit"/>
+        <b-form-input v-model="row.item.produit" />
       </template>
       <template v-slot:cell(qty)="row">
-        <b-form-input v-model="row.item.qty"/>
+        <b-form-input v-model="row.item.qty" />
       </template>
       <template v-slot:cell(action)="row">
-        <b-icon icon="trash" style="width: 30px; height: 30px;" @click="deleteItem(row.index)"></b-icon>
-        </template>
+        <b-icon
+          icon="trash"
+          style="width: 30px; height: 30px"
+          @click="deleteItem(row.index)"
+        ></b-icon>
+      </template>
     </b-table>
-    </div>
+  </div>
 </template>
 
 <script>

@@ -38,6 +38,9 @@ export default {
 }
 </script>
 <style>
+  body{
+    background-color: rgb(236, 212, 230);
+  }
 .buttonSave{
   position: fixed;
   margin: 0 auto;
@@ -55,8 +58,8 @@ export default {
   width: 275px;
 }
 .nav-link{
-    color: #e7ade9 !important;
-    font-weight: bold;
+  color: #e7ade9 !important;
+  font-weight: bold;
 }
 .bg-dark{
   background-color: rgb(36, 129, 235) !important;

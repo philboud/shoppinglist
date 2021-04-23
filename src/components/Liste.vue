@@ -1,33 +1,38 @@
 <template>
   <div>
     <div class="pdfbutt">
-    <b-button @click="generatePdf()">Imprimer</b-button>
-    <b-button @click="goToCreat()">Retour</b-button>
+      <b-button @click="generatePdf()">Imprimer</b-button>
+      <b-button @click="goToCreat()">Retour</b-button>
       <b-alert
         :show="dismissCountDown1"
-         dismissible
-         fade
-         variant="warning"
-         @dismiss-count-down="countDownChanged1"
+        dismissible
+        fade
+        variant="warning"
+        @dismiss-count-down="countDownChanged1"
       >
-        Tu n'as pas enrigistré tes modif...? clique sur enregitré sinon c'est perdu!
+        Tu n'as pas enrigistré tes modif...? clique sur enregitré sinon c'est
+        perdu!
       </b-alert>
-    <b-button v-if="!visible" @click="modifList()">Modifie</b-button>
-    <b-button v-if="visible" @click="saveModif()">Enregistre</b-button>
+      <b-button v-if="!visible" @click="modifList()">Modifie</b-button>
+      <b-button v-if="visible" @click="saveModif()">Enregistre</b-button>
     </div>
     <div class="container">
       <div>
         <h4>Ta p'tite liste de courses!!!</h4>
       </div>
- <b-table id="products" striped hover :fields="fields" :items="selected">
-      <template v-if="visible" v-slot:cell(produit)="row">
-        <b-form-input v-model="row.item.produit"/>
-      </template>
-      <template v-if="visible" v-slot:cell(qty)="row">
-        <b-form-input v-model="row.item.qty"/>
-      </template>
-      <template v-if="visible" v-slot:cell(action)="row">
-        <b-icon icon="trash" style="width: 30px; height: 30px;" @click="deleteItem(row.index)"></b-icon>
+      <b-table id="products" striped hover :fields="fields" :items="selected">
+        <template v-if="visible" v-slot:cell(produit)="row">
+          <b-form-input v-model="row.item.produit" />
+        </template>
+        <template v-if="visible" v-slot:cell(qty)="row">
+          <b-form-input v-model="row.item.qty" />
+        </template>
+        <template v-if="visible" v-slot:cell(action)="row">
+          <b-icon
+            icon="trash"
+            style="width: 30px; height: 30px"
+            @click="deleteItem(row.index)"
+          ></b-icon>
         </template>
       </b-table>
     </div>

@@ -141,6 +141,7 @@ export default {
 }
 .butt {
   max-width: 150px;
+  min-height: 90px;
   margin-left: 10px;
   margin-top: 20px;
 }

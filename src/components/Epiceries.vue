@@ -4,13 +4,23 @@
       <h4>Epicerie</h4>
     </div>
     <div class="articles">
- <div class="selectInList">
-    <b-form-select class="selectSize" v-model="selected" :options="epicerie" @change="addTolist"></b-form-select>
-  </div>
-  <div>
-    <b-modal ref="my-modal" hide-footer title="Combien en veux tu?" centered>
-      <div class="d-block text-center">
-         <b-form-select v-model="qtys" :options="unites"></b-form-select>
+      <div class="selectInList">
+        <b-form-select
+          class="selectSize"
+          v-model="selected"
+          :options="epicerie"
+          @change="addTolist"
+        ></b-form-select>
+      </div>
+      <div>
+        <b-modal
+          ref="my-modal"
+          hide-footer
+          title="Combien en veux tu?"
+          centered
+        >
+          <div class="d-block text-center">
+            <b-form-select v-model="qtys" :options="unites"></b-form-select>
             <b-alert
               :show="dismissCountDown1"
               dismissible
@@ -18,9 +28,12 @@
               variant="warning"
               @dismiss-count-down="countDownChanged1"
             >
-            Selectionne combien tu en veux...?
+              Selectionne combien tu en veux...?
             </b-alert>
-         <b-input v-model="qty" placeholder="Ou ecris ce que tu veux!"></b-input>
+            <b-input
+              v-model="qty"
+              placeholder="Ou ecris ce que tu veux!"
+            ></b-input>
             <b-alert
               :show="dismissCountDown2"
               dismissible
@@ -28,28 +41,36 @@
               variant="warning"
               @dismiss-count-down="countDownChanged2"
             >
-            Ou écris combien tu en veux...?
+              Ou écris combien tu en veux...?
             </b-alert>
-      </div>
-      <b-button class="mt-3" variant="success" block @click="hideModal">Validez!</b-button>
+          </div>
+          <b-button class="mt-3" variant="success" block @click="hideModal"
+            >Validez!</b-button
+          >
         </b-modal>
-    </div>
+      </div>
     </div>
     <div class="buttSave">
-    <b-button variant="success" @click="goToCat()">Enregistre et retourne aux catégories</b-button>
+      <b-button variant="success" @click="goToCat()"
+        >Enregistre et retourne aux catégories</b-button
+      >
     </div>
-      <div class="tabList">
-    <b-table striped hover :items="listeEnCours" :fields="fields">
-      <template v-slot:cell(produit)="row">
-        <b-form-input v-model="row.item.produit"/>
-      </template>
-      <template v-slot:cell(qty)="row">
-        <b-form-input v-model="row.item.qty"/>
-      </template>
-      <template v-slot:cell(action)="row">
-        <b-icon icon="trash" style="width: 30px; height: 30px;" @click="deleteItem(row.index)"></b-icon>
+    <div class="tabList">
+      <b-table striped hover :items="listeEnCours" :fields="fields">
+        <template v-slot:cell(produit)="row">
+          <b-form-input v-model="row.item.produit" />
         </template>
-    </b-table>
+        <template v-slot:cell(qty)="row">
+          <b-form-input v-model="row.item.qty" />
+        </template>
+        <template v-slot:cell(action)="row">
+          <b-icon
+            icon="trash"
+            style="width: 30px; height: 30px"
+            @click="deleteItem(row.index)"
+          ></b-icon>
+        </template>
+      </b-table>
     </div>
   </div>
 </template>
