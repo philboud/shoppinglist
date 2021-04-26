@@ -38,15 +38,11 @@ export default {
 }
 </script>
 <style>
-  body{
-    background-color: rgb(236, 212, 230);
-  }
 .buttonSave{
   position: fixed;
   margin: 0 auto;
-  margin-left: 25%;
-  margin-top: -80px;
-  width: 200px;
+  max-width: 180px;
+  margin-left: 28%;
 }
 .articles{
   margin-bottom: 10px;
@@ -58,11 +54,11 @@ export default {
   width: 275px;
 }
 .nav-link{
-  color: #e7ade9 !important;
+  color: #e1f00f !important;
   font-weight: bold;
 }
 .bg-dark{
-  background-color: rgb(36, 129, 235) !important;
+  background-color: rgb(6, 73, 145) !important;
 }
 .accueilEntete {
   margin: 0 auto;
@@ -82,7 +78,7 @@ export default {
   margin: 0 auto;
   text-align: center;
   width: 250px;
-  background-color: rgb(92, 213, 243);
+  background-color: rgb(92, 243, 180);
   margin-bottom: 10px;
 }
 .selectSize{

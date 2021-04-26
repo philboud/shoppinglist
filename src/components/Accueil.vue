@@ -1,13 +1,12 @@
 <template>
   <div class="entete">
+    <div class="subtitle">
     <p class="layus">petite app pour créer votre liste de courses</p>
+    </div>
     <div class="goMag">
       <b-button class="butt" @click="goToApp()" variant="primary"
         >C'est parti...!</b-button>
         </div>
-        <div class="lievre">
-        <b-img :src="require('../assets/lievre.jpg')" fluid class="lievreimg"></b-img>
-      </div>
     <div>
       <b-img :src="require('../assets/panier.png')" class="panierimg"></b-img>
     </div>
@@ -81,9 +80,9 @@ export default {
   margin: 0 auto;
   width: 120px;
 }
-.goMag:hover{
-  transform:  scale(2);
-  transition: all 330ms ease-in-out;
+.goMag:active{
+  transform:  scale(2) rotate(3turn);
+   transition: all 200ms ease-in-out;
 }
 .lievre{
   margin: 0 auto;

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="textExpl">
+    <div class="subtitle">
       <p>
-        Créé ta liste rapide en choisissant tes produits habituels. si il n'est
-        pas dedans tu peux le créer
+        Créé ta liste rapide en choisissant tes produits habituels. si ils ne sont
+        pas dedans tu peux les créer
       </p>
     </div>
     <div class="newProd">
@@ -88,7 +88,6 @@ export default {
     saveListPerso () {
       localStorage.setItem('global', JSON.stringify(this.globalListe))
       localStorage.setItem('listePerso', JSON.stringify(this.listePerso))
-      console.log('listeperso', this.listePerso)
       this.$router.push({name: 'EssentielList'})
     }
   }

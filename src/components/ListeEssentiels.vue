@@ -2,7 +2,7 @@
   <div>
     <div class="alignDiv">
       <div class="subtitle">
-        <h5>Créé une liste rapide avec tes produits habituels</h5>
+        <h5>Fais ta liste rapide en cochant tes produits</h5>
       </div>
       <div class="itemRunner">
         <b-img

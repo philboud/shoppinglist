@@ -20,6 +20,7 @@ import EssentielList from '@/components/ListeEssentiels'
 import ModeCourses from '@/components/ModeCourses'
 import ModeFastCourse from '@/components/ModeCoursesRapide'
 import Parametrages from '@/components/Parametrages'
+import ParamAppear from '@/components/ParamAppearence'
 
 Vue.use(Router)
 
@@ -119,6 +120,11 @@ export default new Router({
       path: '/parametrages',
       name: 'Parametrages',
       component: Parametrages
+    },
+    {
+      path: '/paramappear',
+      name: 'ParamAppear',
+      component: ParamAppear
     },
     {
       path: '/help',

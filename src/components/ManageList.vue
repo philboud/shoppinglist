@@ -67,12 +67,11 @@
           <div class="alert">
             <b-alert
               :show="dismissCountDown1"
-              dismissible
               fade
-              variant="warning"
+              variant="success"
               @dismiss-count-down="countDownChanged1"
             >
-              Grosse liste supprimée...!
+              Supprimé!
             </b-alert>
             </div>
         </div>
@@ -83,12 +82,11 @@
            <div class="alert">
             <b-alert
               :show="dismissCountDown2"
-              dismissible
               fade
-              variant="warning"
+              variant="success"
               @dismiss-count-down="countDownChanged2"
             >
-              Liste rapide supprimée...!
+              Supprimé!
             </b-alert>
             </div>
         </div>
@@ -186,6 +184,6 @@ export default {
   margin-top: 20px;
 }
 .alert{
-  max-width: 160px;
+  max-width: 150px;
 }
 </style>
